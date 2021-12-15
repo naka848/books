@@ -1,6 +1,8 @@
 <template>
   <div>
-    {{ data.title }}
+    <!-- {{ data.title }} -->
+    {{ book_data.title }}
+    {{ book_data.price }}
   </div>
 </template>
 
@@ -8,6 +10,9 @@
 import { reactive } from "vue";
 export default {
   name: "HelloWorld",
+  props:{
+    book_data: Object,
+  },
   setup() {
     const data = reactive({
       title: "Vueeeee",
