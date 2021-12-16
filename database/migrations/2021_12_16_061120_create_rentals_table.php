@@ -16,7 +16,7 @@ class CreateRentalsTable extends Migration
         Schema::create('rentals', function (Blueprint $table) {
             $table->increments('rental_id');
             $table->string('book_code')->nullable()->change();
-            $table->integer('user_id')->nullable()->change();
+            $table->integer('user_id');
             $table->date('checkout_date');
             $table->date('scheduled_return_date');
             $table->date('return_date');
