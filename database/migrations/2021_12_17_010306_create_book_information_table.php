@@ -14,7 +14,11 @@ class CreateBookInformationTable extends Migration
     public function up()
     {
         Schema::create('book_information', function (Blueprint $table) {
-            $table->id();
+            $table->increments('book_information_id');
+            $table->string('title');
+            $table->string('author');
+            $table->string('publisher');
+            $table->date('published');
             $table->timestamps();
         });
     }

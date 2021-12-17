@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Book extends Model
 {
+    // 編集可能なカラムを設定
     protected $fillable = [
         'purchase_date',
     ];
