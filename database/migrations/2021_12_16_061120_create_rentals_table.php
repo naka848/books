@@ -18,7 +18,6 @@ class CreateRentalsTable extends Migration
             $table->string('book_code')->nullable()->change();
             $table->integer('user_id');
             $table->date('checkout_date');
-            $table->date('scheduled_return_date');
             $table->date('return_date');
             $table->timestamps();
         });
