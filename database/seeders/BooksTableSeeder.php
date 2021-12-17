@@ -15,20 +15,17 @@ class BooksTableSeeder extends Seeder
     public function run()
     {
         $param = [
-            'title' => '坊ちゃん',
-            'price' => '500'
+            'purchase_date' => '2019-01-20',
         ];
         DB::table('books')->insert($param);
     
         $param = [
-            'title' => 'こころ',
-            'price' => '600'
+            'purchase_date' => '2019-06-14',
         ];
         DB::table('books')->insert($param);
 
         $param = [
-           'title' => '三四郎',
-            'price' => '450'
+            'purchase_date' => '2020-08-14',
         ];
         DB::table('books')->insert($param);
     }

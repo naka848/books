@@ -5,9 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Book extends Model
+class BookInformation extends Model
 {
-    protected $fillable = [
-        'purchase_date',
-    ];
+    use HasFactory;
 }
