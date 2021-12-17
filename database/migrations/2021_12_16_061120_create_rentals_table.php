@@ -15,7 +15,10 @@ class CreateRentalsTable extends Migration
     {
         Schema::create('rentals', function (Blueprint $table) {
             $table->increments('rental_id');
-            $table->integer('book_id')->nullable()->change();
+
+            // $table->integer('book_id')->nullable()->change();
+            $table->integer('book_id');
+
             $table->integer('user_id');
             $table->date('checkout_date');
             $table->date('return_date');

@@ -16,6 +16,7 @@ class RentalsTableSeeder extends Seeder
     {
         $param = [
             'user_id' => 1,
+            'book_id' => 1,
             'checkout_date' => '2021-11-03',
             'return_date' => '2021-11-15',
         ];
@@ -23,6 +24,7 @@ class RentalsTableSeeder extends Seeder
 
         $param = [
             'user_id' => 2,
+            'book_id' => 2,
             'checkout_date' => '2021-11-06',
             'return_date' => '2021-11-10',
         ];
@@ -30,6 +32,7 @@ class RentalsTableSeeder extends Seeder
 
         $param = [
             'user_id' => 3,
+            'book_id' => 3,
             'checkout_date' => '2021-11-15',
             'return_date' => '2021-11-14',
         ];
