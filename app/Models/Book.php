@@ -11,4 +11,10 @@ class Book extends Model
     protected $fillable = [
         'purchase_date',
     ];
+
+    public function book_information()
+    {
+        return $this->belongsTo('App\Models\Book','book_information_id','book_information_id');
+    }
+
 }
