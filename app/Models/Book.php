@@ -12,9 +12,12 @@ class Book extends Model
         'purchase_date',
     ];
 
+    // id以外の主キーを設定する
+    protected $primaryKey = 'book_id';
+
     public function book_information()
     {
-        return $this->belongsTo('App\Models\Book','book_information_id','book_information_id');
+        return $this->belongsTo('App\Models\BookInformation','book_information_id','book_information_id');
     }
 
 }

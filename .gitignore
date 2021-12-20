@@ -13,3 +13,6 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+
+#PCごとに設定が異なる部分があるので、gitにあげないことにした
+public/js/app.js

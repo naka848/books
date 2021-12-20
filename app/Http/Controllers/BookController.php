@@ -13,10 +13,24 @@ class BookController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {        
+        // booksテーブルの中身を取り出す
+        // $books = Book::all();
+        // // eloquantをそのままreturnすると、jsonに変換してくれる。
+        // return $books;
+
+        // booksテーブルと、book_informationテーブルの中身を関連付けて取り出す
+        // $books = Book::all();
+        // $book_obj = $books[0]->book_information;
+        // return $book_obj;
+        // →出てこない…？
+
         $books = Book::all();
-        // eloquantをそのままreturnすると、jsonに変換してくれる。
-        return $books;
+        $books_relation=[];
+        foreach ($books as $book) {
+            array_push($books_relation,$book->book_information);
+        }
+        return $books_relation;
     }
 
     /**

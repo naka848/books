@@ -13,4 +13,7 @@ class Rental extends Model
         'checkout_date',
         'return_date',
     ];
+
+    // id以外の主キーを設定する
+    protected $primaryKey = 'rental_id';
 }
