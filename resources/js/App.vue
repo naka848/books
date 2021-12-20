@@ -2,10 +2,10 @@
 <div>
   <Header />
   <Sidebar />
-  <List
+  <!-- <List
     v-for="data in data.book_list"
     v-bind:book_list="data"
-    v-bind:key="data.book_id" />
+    v-bind:key="data.book_id" /> -->
   <router-view></router-view>
 </div>
 </template>
@@ -13,7 +13,7 @@
 <script>
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
-import List from "./components/List";
+import List2 from "./components/List2";
 
 import { reactive } from "vue";
 import axios from "axios";
