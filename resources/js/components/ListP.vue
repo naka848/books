@@ -1,6 +1,6 @@
 <template>
     <div>
-        <List
+        <ListC
         v-for="data in data.book_list"
         v-bind:book_list="data"
         v-bind:key="data.book_id" />
@@ -11,10 +11,12 @@
 import { reactive } from "vue";
 import axios from "axios";
 
+import ListC from "./ListC";
+
 export default{
-    name: "List2",
+    name: "ListP",
     components: {
-        List2,
+        ListC,
     },
     setup() {
     const data = reactive({

@@ -13,7 +13,6 @@
 <script>
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
-import List2 from "./components/List2";
 
 import { reactive } from "vue";
 import axios from "axios";
@@ -23,7 +22,6 @@ export default {
   components: {
     Header,
     Sidebar,
-    List,
   },
   setup() {
     const data = reactive({

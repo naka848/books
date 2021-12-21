@@ -7,7 +7,7 @@
 <script>
 import { reactive } from "vue";
 export default {
-  name: "List",
+  name: "ListC",
   props:{
     book_list: Object,
   },
