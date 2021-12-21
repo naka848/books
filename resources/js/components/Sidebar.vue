@@ -1,8 +1,9 @@
 <template>
     <div>
         <p>メニュー（SAMPLE）</p>
-        <p>・書籍をさがす</p>
-        <p>・よく借りられている本</p>
+        <router-link to="/list">本の一覧</router-link>
+        <br>
+        <router-link to="/find">本を探す</router-link>
     </div>
 </template>
 

@@ -23,14 +23,24 @@ class BookController extends Controller
         // $books = Book::all();
         // $book_obj = $books[0]->book_information;
         // return $book_obj;
-        // →出てこない…？
-
+  
+        // クエリの抽出条件がない場合、全件表示する
         $books = Book::all();
         $books_relation=[];
         foreach ($books as $book) {
             array_push($books_relation,$book->book_information);
         }
-        return $books_relation;
+        // return $books_relation;
+
+        // クエリの抽出条件がある場合、絞ったデータをだす!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        // $books_searched = Book::where('book_id','2')->get();
+        // return $books_searched;
+
+        // うまくいってない！！！！
+        $books_searched = $book->book_information->where('book_id','2')->get();
+        return $books_searched;
+        // こういうことでは？（一気にかきすぎたので、小さく検証する）
+        // $books_searched = $book->book_information->where('title','like',"%search_word%")->get();
     }
 
     /**

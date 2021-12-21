@@ -9,11 +9,12 @@
 </template>
 
 <script>
+// 関数reactiveのインポート
 import { reactive } from "vue";
-import HelloWorld from "./components/HelloWorld";
-
 // "axios"のライブラリのインポート
 import axios from "axios";
+
+import HelloWorld from "./components/HelloWorld";
 
 export default {
   name: "App",
