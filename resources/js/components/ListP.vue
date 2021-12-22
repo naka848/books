@@ -23,7 +23,7 @@ export default{
     const data = reactive({
       book_list:[],
     });
-    const url = "http://127.0.0.1:8000/api/books?title=";
+    const url = "http://127.0.0.1:8000/api/books";
     const getAPI = async () => {
       const result = await axios.get(url);
       console.log(result);

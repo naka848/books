@@ -19666,7 +19666,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     var data = (0,vue__WEBPACK_IMPORTED_MODULE_1__.reactive)({
       book_list: []
     });
-    var url = "http://127.0.0.1:8000/api/books?title=";
+    var url = "http://127.0.0.1:8000/api/books";
 
     var getAPI = /*#__PURE__*/function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
