@@ -24,7 +24,6 @@ class BookController extends Controller
         // $book_obj = $books[0]->book_information;
         // return $book_obj;
   
-        // クエリの抽出条件がない場合、全件表示する
         $books = Book::all();
         $books_relation=[];
         foreach ($books as $book) {
@@ -36,7 +35,7 @@ class BookController extends Controller
         // $books_searched = Book::where('book_id','2')->get();
         // return $books_searched;
 
-        // うまくいってない！！！！
+        // うまくいってない！！！！まずはモデルをだす。リレーションはあと
         // $books_searched = $book->book_information->where('book_id','2')->get();
         // return $books_searched;
         // こういうことでは？（一気にかきすぎたので、小さく検証する）
@@ -62,7 +61,8 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        //
+        $book = Book::where('book_id',$id)->get();
+        return $book;
     }
 
     /**

@@ -1,9 +1,16 @@
 <template>
     <div>
         <p>メニュー（SAMPLE）</p>
-        <router-link to="/list">本の一覧</router-link>
-        <br>
-        <router-link to="/find">本を探す</router-link>
+        <p>学生用</p>
+        <ul>
+            <li><router-link to="/list">本の一覧</router-link></li>
+            <li><router-link to="/find">本を探す</router-link></li>
+        </ul>
+        <p>教員用</p>
+        <ul>
+            <li>本の追加</li>
+            <li>本の削除</li>
+        </ul>
     </div>
 </template>
 
