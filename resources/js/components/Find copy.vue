@@ -8,6 +8,7 @@
 
 <script>
 import { reactive } from "vue";
+// import { reactive, onMounted } from "vue";
 import axios from "axios";
 
 // let url = "http://127.0.0.1:8000/api/books"
@@ -20,7 +21,7 @@ export default {
     });
 
     const getData = async () => {
-      const querry = "/" + data.find;
+      const querry = "/1";
       const result = await axios.get(
         "http://127.0.0.1:8000/api/books" + querry
       );
