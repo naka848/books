@@ -19552,13 +19552,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                querry = "/1";
+                querry = "/?title=Vue.js3 超入門"; // const querry = "/Vue.js3 超入門";
+
                 _context.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_2___default().get("http://127.0.0.1:8000/api/books" + querry);
+                return axios__WEBPACK_IMPORTED_MODULE_2___default().get("http://127.0.0.1:8000/api/book_information" + querry);
 
               case 3:
                 result = _context.sent;
-                console.log(result); //   return false;
+                console.log(result);
 
               case 5:
               case "end":
@@ -19571,8 +19572,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return function getData() {
         return _ref.apply(this, arguments);
       };
-    }(); // getData();
-
+    }();
 
     return {
       data: data,

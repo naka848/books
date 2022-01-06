@@ -14,32 +14,15 @@ class BookController extends Controller
      */
     public function index()
     {        
-        // booksテーブルの中身を取り出す
-        // $books = Book::all();
-        // // eloquantをそのままreturnすると、jsonに変換してくれる。
-        // return $books;
-
-        // booksテーブルと、book_informationテーブルの中身を関連付けて取り出す
-        // $books = Book::all();
-        // $book_obj = $books[0]->book_information;
-        // return $book_obj;
   
         $books = Book::all();
         $books_relation=[];
         foreach ($books as $book) {
             array_push($books_relation,$book->book_information);
         }
+        // eloquantをそのままreturnすると、jsonに変換してくれる。
         return $books_relation;
 
-        // クエリの抽出条件がある場合、絞ったデータをだす!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        // $books_searched = Book::where('book_id','2')->get();
-        // return $books_searched;
-
-        // うまくいってない！！！！まずはモデルをだす。リレーションはあと
-        // $books_searched = $book->book_information->where('book_id','2')->get();
-        // return $books_searched;
-        // こういうことでは？（一気にかきすぎたので、小さく検証する）
-        // $books_searched = $book->book_information->where('title','like',"%search_word%")->get();
     }
 
     /**
@@ -59,10 +42,20 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function show($id)
     {
-        $book = Book::where('book_id',$id)->get();
-        return $book;
+        // ①リレーション前の状態で検索成功(テキストp299)
+        // $books = Book::where('book_id',$id)->get();
+        // return $books;
+
+        // ②リレーション後の状態で検索成功
+        // $books = Book::where('book_id',$id)->get();
+        // $books_relation=[];
+        // foreach ($books as $book) {
+        //     array_push($books_relation,$book->book_information);
+        // }
+        // return $books_relation;
     }
 
     /**
