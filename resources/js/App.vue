@@ -1,8 +1,8 @@
 <template>
-<div>
-  <Header />
-  <Sidebar />
-  <router-view></router-view>
+<div class="wrap">
+  <Header class="header"/>
+  <Sidebar class="sidebar"/>
+  <router-view class="router-view"></router-view>
 </div>
 </template>
 
@@ -18,3 +18,31 @@ export default {
   },
 };
 </script>
+
+<style>
+.wrap{
+  width: 900px;
+}
+
+.header{
+  background-color:darkslateblue;
+  color: aliceblue;
+  width: 900px;
+  height: 70px;
+  padding: 10px;
+}
+
+.sidebar{
+  width: 150px;
+  float: left;
+  padding: 10px;
+}
+
+.router-view{
+  background-color: rgb(227, 228, 230);
+  width: 700px;
+  height: 800px;
+  float: right;
+  padding: 10px;
+}
+</style>
