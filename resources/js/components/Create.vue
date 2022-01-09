@@ -23,6 +23,7 @@
 
 <script>
 import { reactive } from "vue";
+import axios from "axios";
 
 export default{
     name: "Create",
@@ -34,8 +35,17 @@ export default{
             published: "",
         });
 
-    const getData = () => {
-        console.log(data.title);
+    const getData = async () => {
+      const result = await axios.post(
+        "http://127.0.0.1:8000/api/book_information",
+        {
+            title: data.title,
+            author: data.author,
+            publisher: data.publisher,
+            published: data.published,
+        }
+      );
+      console.log(result);
     };
 
     return { data, getData };
