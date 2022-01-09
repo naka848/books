@@ -8,7 +8,8 @@
         </ul>
         <p>教員用</p>
         <ul>
-            <li><router-link to="/create">本の追加</router-link></li>
+            <li><router-link to="/create">本の登録</router-link></li>
+            <li>本の追加</li>
             <li>本の削除</li>
         </ul>
     </div>
