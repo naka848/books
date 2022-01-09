@@ -2,6 +2,7 @@ import {createRouter, createWebHistory} from 'vue-router'
 // 必要なコンポーネントをインポート
 import ListP from "./components/ListP";
 import Find from "./components/Find";
+import Create from "./components/Create";
 
 export const router = createRouter({
     history: createWebHistory(),
@@ -17,6 +18,11 @@ export const router = createRouter({
             path: '/find',
             name: 'find',
             component: Find,
+        },
+        {
+            path: '/create',
+            name: 'create',
+            component: Create,
         }
     ]
 })
