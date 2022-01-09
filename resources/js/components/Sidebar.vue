@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p>メニュー（SAMPLE）</p>
+        <p>【メニュー】</p>
         <p>学生用</p>
         <ul>
             <li><router-link to="/list">本の一覧</router-link></li>
