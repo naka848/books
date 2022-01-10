@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h3>書籍情報の登録</h3>
+        <h3>書籍情報登録</h3>
         <div>
             <label>タイトル　</label>
             <input type="text" v-model="data.title">

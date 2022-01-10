@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BookInformation;
 use Illuminate\Http\Request;
 
 class BookInformationController extends Controller
@@ -13,7 +14,8 @@ class BookInformationController extends Controller
      */
     public function index()
     {
-        //
+        $books = BookInformation::all();
+        return $books;
     }
 
     /**
@@ -24,7 +26,12 @@ class BookInformationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // BookInformationモデルのインスタンスを新規作成
+        $book_information = new BookInformation;
+        // 属性の代入を fill メソッドで保護
+        $book_information->fill($request->all());
+        // $book_informationの内容をテーブル(DB)に保存
+        $book_information->save();
     }
 
     /**

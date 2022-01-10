@@ -1,16 +1,22 @@
 <template>
     <div>
-        <p>【メニュー】</p>
-        <p>学生用</p>
+        <h4>【メニュー】</h4>
+        <h4>学生用</h4>
         <ul>
             <li><router-link to="/list">本の一覧</router-link></li>
             <li><router-link to="/find">本を探す</router-link></li>
         </ul>
-        <p>教員用</p>
+        <h4>教員用</h4>
+        <h5>書籍情報</h5>
         <ul>
-            <li><router-link to="/create">本の登録</router-link></li>
-            <li>本の追加</li>
-            <li>本の削除</li>
+            <li><router-link to="/list_BI">一覧</router-link></li>
+            <li><router-link to="/create">登録</router-link></li>
+            <li>削除</li>
+        </ul>
+        <h5>書籍</h5>
+        <ul>
+            <li>登録</li>
+            <li>削除</li>
         </ul>
     </div>
 </template>
