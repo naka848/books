@@ -46,6 +46,9 @@ export default{
         }
       );
       console.log(result);
+      
+      //登録終わったら一覧ページにいきたいな…
+      window.location.href = "http://127.0.0.1:8000/listBI";
     };
 
     return { data, getData };

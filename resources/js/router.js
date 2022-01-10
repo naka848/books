@@ -2,7 +2,7 @@ import {createRouter, createWebHistory} from 'vue-router'
 // 必要なコンポーネントをインポート
 import ListP from "./components/ListP";
 import Find from "./components/Find";
-import ListBI from "./components/List_BI";
+import ListBI from "./components/ListBI";
 import Create from "./components/Create";
 
 export const router = createRouter({
@@ -21,9 +21,9 @@ export const router = createRouter({
             component: Find,
         },
         {
-            path: '/list_BI',
-            name: 'list_BI',
-            component: List_BI,
+            path: '/listBI',
+            name: 'listBI',
+            component: ListBI,
         },
         {
             path: '/create',
