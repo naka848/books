@@ -46,7 +46,8 @@ class BookInformationController extends Controller
         // ③タイトル全部入力したら検索ができるようにする！
         // where(フィールド名,値)→曖昧検索p212
         // showアクションでid以外を検索する方法がわからない…
-        $title = $request->title;
+        // dd($request);
+        $title = $request;
         $books = BookInformation::where('title',$title)->get();
         return $books;
 

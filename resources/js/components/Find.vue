@@ -21,11 +21,11 @@ export default {
     });
 
     const getData = async () => {
-      const querry = "/?title=Vue.js3 超入門";
-      // const querry = "/Vue.js3 超入門";
+      const querry = "/Vue.js3 超入門";
       const result = await axios.get(
         "http://127.0.0.1:8000/api/book_information" + querry
       );
+      console.log("http://127.0.0.1:8000/api/book_information" + querry)
       console.log(result);
     };
 

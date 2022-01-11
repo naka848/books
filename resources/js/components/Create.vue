@@ -1,22 +1,16 @@
 <template>
     <div>
         <h3>書籍情報登録</h3>
-        <div>
-            <label>タイトル　</label>
-            <input type="text" v-model="data.title">
-        </div>
-        <div>
-            <label>著者名　　</label>
-            <input type="text" v-model="data.author">
-        </div>
-        <div>
-            <label>出版社名　</label>
-            <input type="text" v-model="data.publisher">
-        </div>
-        <div>
-            <label>出版日　　</label>
-            <input type="date" v-model="data.published">
-        </div>
+        <dl>
+            <dt>タイトル</dt>
+            <dd><input type="text" v-model="data.title"></dd>
+            <dt>著者名</dt>
+            <dd><input type="text" v-model="data.author"></dd>
+            <dt>出版社名</dt>
+            <dd><input type="text" v-model="data.publisher"></dd>
+            <dt>出版日</dt>
+            <dd><input type="date" v-model="data.published"></dd>
+        </dl>
         <button @click="getData">登録</button>
     </div>
 </template>
@@ -47,7 +41,7 @@ export default{
       );
       console.log(result);
       
-      //登録終わったら一覧ページにいきたいな…
+      //登録が完了したら書籍情報一覧ページへとぶ
       window.location.href = "http://127.0.0.1:8000/listBI";
     };
 
