@@ -13,8 +13,7 @@ class BookController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {        
-  
+    {         
         $books = Book::all();
         $books_relation=[];
         foreach ($books as $book) {
@@ -22,7 +21,6 @@ class BookController extends Controller
         }
         // eloquantをそのままreturnすると、jsonに変換してくれる。
         return $books_relation;
-
     }
 
     /**

@@ -15,7 +15,20 @@ class BookInformationController extends Controller
     public function index()
     {
         $books = BookInformation::all();
-        return $books;
+        $books_relation=[];
+        foreach ($books as $book) {
+            array_push($books_relation,$book->books);
+        }
+        return $books_relation;
+
+        // リレーションがうまくいかん…
+        // $books_relation=[]の中に、これもいれたい！FOREACHのしたとか？
+        // 同じbookインフォメーションIDのものはどうやってだすんだろう？
+        // $count = $book->books->count();
+
+        // 書籍情報一覧用に書いてたもの
+        // $books = BookInformation::all();
+        // return $books;
     }
 
     /**

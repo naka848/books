@@ -16,4 +16,10 @@ class BookInformation extends Model
 
     // id以外の主キーを設定する
     protected $primaryKey = 'book_information_id';
+
+    public function books()
+    {
+        return $this->hasMany('App\Models\Book','book_information_id','book_information_id');
+    }
 }
+
