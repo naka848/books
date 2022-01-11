@@ -41,18 +41,19 @@ class BookInformationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($request)
-    // public function show($title)
     {
-        // ③タイトル全部入力したら検索ができるようにする！
+        // ③タイトル全部入力したら検索成功
         // where(フィールド名,値)→曖昧検索p212
         // showアクションでid以外を検索する方法がわからない…
         // dd($request);
-        $title = $request;
-        $books = BookInformation::where('title',$title)->get();
-        return $books;
-
+        // $title = $request;
         // $books = BookInformation::where('title',$title)->get();
         // return $books;
+
+        // ④曖昧検索ができるようにする！
+        $keyword = $request;
+        $books = BookInformation::where('title','like','%' . $keyword . '%')->get();
+        return $books;
     }
 
     /**

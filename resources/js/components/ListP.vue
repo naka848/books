@@ -12,7 +12,6 @@
 <script>
 import { reactive } from "vue";
 import axios from "axios";
-
 import ListC from "./ListC";
 
 export default {
