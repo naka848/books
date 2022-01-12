@@ -14,32 +14,25 @@ class BookInformationController extends Controller
      */
     public function index()
     {
-        $book_informations = BookInformation::all();
-        $books_all=[];
-        foreach ($book_informations as $book_information) {
+        // $book_informations = BookInformation::all();
+        // $books_all=[];
+        // foreach ($book_informations as $book_information) {
+        //     // hasMany()のリレーションを分解
+        //     foreach ($book_information->books as $book) {
+        //         // ループ毎に初期化
+        //         $books_relation=[];
+        //         // その本の情報をいれる
+        //         array_push($books_relation, $book_information);
+        //         // (複数ある本の)それぞれの情報を追加
+        //         array_push($books_relation, $book);
+        //         // APIで渡す配列に追加
+        //         array_push($books_all, $books_relation);
+        //     }
+        // }
+        // return $books_all;
 
-            // hasMany()のリレーションを分解
-            foreach ($book_information->books as $book) {
-
-                // ループ毎に初期化
-                $books_relation=[];
-
-                // その本の情報をいれる
-                array_push($books_relation, $book_information);
-
-                // (複数ある本の)それぞれの情報を追加
-                array_push($books_relation, $book);
-          
-                // APIで渡す配列に追加
-                array_push($books_all, $books_relation);
-            }
-        }
-        return $books_all;
-
-
-        // 書籍情報一覧用に書いてたもの
-        // $books = BookInformation::all();
-        // return $books;
+        $books = BookInformation::all();
+        return $books;
     }
 
     /**
@@ -66,18 +59,27 @@ class BookInformationController extends Controller
      */
     public function show($request)
     {
-        // ③タイトル全部入力したら検索成功
-        // where(フィールド名,値)→曖昧検索p212
-        // showアクションでid以外を検索する方法がわからない…
-        // dd($request);
-        // $title = $request;
-        // $books = BookInformation::where('title',$title)->get();
-        // return $books;
-
-        // ④曖昧検索ができるようにする！
         $keyword = $request;
-        $books = BookInformation::where('title', 'like', '%' . $keyword . '%')->get();
-        return $books;
+        $book_informations = BookInformation::where('title', 'like', '%' . $keyword . '%')->get();
+        // dd($book_informations);  →中身：コレクション
+        $books_all=[];
+        foreach ($book_informations as $book_information) {
+        // dd($book_information);  →中身：book_informationモデル
+            foreach ($book_information->books as $book) {
+            // dd($book);  →中身：bookモデル
+                foreach ($book->rentals as $rental){
+                // dd($rental);  →中身：rentalモデル
+                $books_relation=[];
+                array_push($books_relation, $book_information);
+                // array_push($books_relation, $book);
+                // array_push($books_relation, $rental);
+                // dd($books_relation[2]);  →中身：各モデル（要素数3）
+                array_push($books_all, $books_relation);
+                }
+            }
+        }
+        return $books_all;
+        // dd($books_all);  →中身：希望した内容になってる！
     }
 
     /**

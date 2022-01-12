@@ -14,7 +14,7 @@ class BookInformation extends Model
         'updated_at',
     ];
 
-    // id以外の主キーを設定する
+    // id以外の主キーを設定
     protected $primaryKey = 'book_information_id';
 
     public function books()

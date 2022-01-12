@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>書籍一覧</h3>
+    <h3>書籍情報一覧</h3>
     <ListC
       v-for="data in data.book_list"
       v-bind:book_list="data"
@@ -23,7 +23,6 @@ export default {
     const data = reactive({
       book_list: [],
     });
-    // const url = "http://127.0.0.1:8000/api/books";
     const url = "http://127.0.0.1:8000/api/book_information";
     const getAPI = async () => {
       const result = await axios.get(url);

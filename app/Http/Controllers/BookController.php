@@ -43,21 +43,9 @@ class BookController extends Controller
 
     public function show($id)
     {
-        // ①リレーション前の状態で検索成功(テキストp299)
-        // $books = Book::where('book_id',$id)->get();
-        // return $books;
-
-        // ②リレーション後の状態で検索成功
-        // $books = Book::where('book_id',$id)->get();
-        // $books_relation=[];
-        // foreach ($books as $book) {
-        //     array_push($books_relation,$book->book_information);
-        // }
-        // return $books_relation;
-
-        // レンタルできるできない情報をまとめたJSONデータをつくりたい
-        $book = Book::where('book_information_id',1);
-        $rentable = [];
+        // レンタルできるできない情報をまとめたJSONデータをつくりたい(かきかけ！！)
+        // $book = Book::where('book_information_id',1);
+        // $rentable = [];
     }
 
     /**
