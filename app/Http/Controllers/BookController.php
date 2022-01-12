@@ -54,6 +54,10 @@ class BookController extends Controller
         //     array_push($books_relation,$book->book_information);
         // }
         // return $books_relation;
+
+        // レンタルできるできない情報をまとめたJSONデータをつくりたい
+        $book = Book::where('book_information_id',1);
+        $rentable = [];
     }
 
     /**

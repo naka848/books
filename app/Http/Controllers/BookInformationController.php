@@ -14,17 +14,28 @@ class BookInformationController extends Controller
      */
     public function index()
     {
-        $books = BookInformation::all();
-        $books_relation=[];
-        foreach ($books as $book) {
-            array_push($books_relation,$book->books);
-        }
-        return $books_relation;
+        $book_informations = BookInformation::all();
+        $books_all=[];
+        foreach ($book_informations as $book_information) {
 
-        // リレーションがうまくいかん…
-        // $books_relation=[]の中に、これもいれたい！FOREACHのしたとか？
-        // 同じbookインフォメーションIDのものはどうやってだすんだろう？
-        // $count = $book->books->count();
+            // hasMany()のリレーションを分解
+            foreach ($book_information->books as $book) {
+
+                // ループ毎に初期化
+                $books_relation=[];
+
+                // その本の情報をいれる
+                array_push($books_relation, $book_information);
+
+                // (複数ある本の)それぞれの情報を追加
+                array_push($books_relation, $book);
+          
+                // APIで渡す配列に追加
+                array_push($books_all, $books_relation);
+            }
+        }
+        return $books_all;
+
 
         // 書籍情報一覧用に書いてたもの
         // $books = BookInformation::all();
@@ -65,7 +76,7 @@ class BookInformationController extends Controller
 
         // ④曖昧検索ができるようにする！
         $keyword = $request;
-        $books = BookInformation::where('title','like','%' . $keyword . '%')->get();
+        $books = BookInformation::where('title', 'like', '%' . $keyword . '%')->get();
         return $books;
     }
 
