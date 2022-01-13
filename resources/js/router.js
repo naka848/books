@@ -3,7 +3,6 @@ import {createRouter, createWebHistory} from 'vue-router'
 import ListP from "./components/ListP";
 import Find from "./components/Find";
 import Find2 from "./components/Find2";
-import Find3 from "./components/Find3";
 // import ListBI from "./components/ListBI";
 import Create from "./components/Create";
 
@@ -26,11 +25,6 @@ export const router = createRouter({
             path: '/find2',
             name: 'find2',
             component: Find2,
-        },
-        {
-            path: '/find3',
-            name: 'find3',
-            component: Find3,
         },
         // {
         //     path: '/listBI',
