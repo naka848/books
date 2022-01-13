@@ -21,7 +21,7 @@ class CreateRentalsTable extends Migration
 
             $table->integer('user_id');
             $table->date('checkout_date');
-            $table->date('return_date');
+            $table->date('return_date')->nullable();
             $table->timestamps();
         });
     }

@@ -19,12 +19,6 @@ class BooksTableSeeder extends Seeder
             'purchase_date' => '2019-01-20',
         ];
         DB::table('books')->insert($param);
-
-        $param = [
-            'book_information_id' => 1,
-            'purchase_date' => '2021-09-27',
-        ];
-        DB::table('books')->insert($param);
     
         $param = [
             'book_information_id' => 2,
@@ -35,6 +29,12 @@ class BooksTableSeeder extends Seeder
         $param = [
             'book_information_id' => 3,
             'purchase_date' => '2020-08-14',
+        ];
+        DB::table('books')->insert($param);
+
+        $param = [
+            'book_information_id' => 1,
+            'purchase_date' => '2021-09-27',
         ];
         DB::table('books')->insert($param);
     }

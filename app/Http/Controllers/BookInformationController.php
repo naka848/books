@@ -60,7 +60,7 @@ class BookInformationController extends Controller
     public function show($request)
     {
         $keyword = $request;
-        $book_informations = BookInformation::where('title', 'like', '%' . $keyword . '%')->get();
+        $book_informations = BookInformation::where('title', 'like', '%' . $keyword . '%')->get()->all();
         // dd($book_informations);  →中身：コレクション
         $books_all=[];
         foreach ($book_informations as $book_information) {

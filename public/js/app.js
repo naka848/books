@@ -19709,8 +19709,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                // const querry = "/" + data.find;
-                querry = "/vue";
+                querry = "/" + data.find;
                 _context.next = 3;
                 return axios__WEBPACK_IMPORTED_MODULE_2___default().get("http://127.0.0.1:8000/api/book_information" + querry);
 

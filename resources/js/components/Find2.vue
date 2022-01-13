@@ -28,8 +28,7 @@ export default {
     });
 
     const getData = async () => {
-      // const querry = "/" + data.find;
-      const querry = "/vue";
+      const querry = "/" + data.find;
       const result = await axios.get(
         "http://127.0.0.1:8000/api/book_information" + querry
       );
