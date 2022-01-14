@@ -1,7 +1,11 @@
 <template>
   <div>
-    <!-- {{ book_lists }} -->
-    {{ data.book_list }}
+    <Find2G
+      v-for="data in data.book_list"
+      v-bind:book_list="data"
+      v-bind:key="data.book_id"
+    />
+    <!-- {{ data.book_list }} -->
   </div>
 </template>
 
@@ -17,12 +21,11 @@ export default {
   props:{
     book_lists: Object,
   },
-  setup() {
+  setup(props) {
     const data = reactive({
       book_list: [],
     });
-    // data.book_list = book_lists;
-    console.log(data.book_list);
+    data.book_list = props.book_lists;
     return { data };
   },
 };
