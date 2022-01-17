@@ -10,6 +10,7 @@ class Book extends Model
     // 編集可能なカラムを設定
     protected $fillable = [
         'purchase_date',
+        'availability',
     ];
 
     // id以外の主キーを設定

@@ -61,28 +61,34 @@ class BookInformationController extends Controller
     {
         $keyword = $request;
         $book_informations = BookInformation::where('title', 'like', '%' . $keyword . '%')->get()->all();
+
+        
         // dd($book_informations);  →中身：コレクション
         $books_all=[];
         foreach ($book_informations as $book_information) {
         // dd($book_information);  →中身：book_informationモデル
+            $books_relation=[];
             foreach ($book_information->books as $book) {
             // dd($book);  →中身：bookモデル
                 foreach ($book->rentals as $rental){
                 // dd($rental);  →中身：rentalモデル
-                $books_relation=[];
+                // dd($book_information);
+                // $books_relation=[];
                 // dd($book_information);  →中身：book_informationモデル+リレーションをかけたモデル
 
                 // dd($rental['return_date']);
                 // if(!is_null($rental['return_date'])){
-                    array_push($books_relation, $book_information);
+                    // array_push($books_relation, $book_information);
                 // } 
                
                 // array_push($books_relation, $book);
                 // array_push($books_relation, $rental);
                 // dd($books_relation[2]);  →中身：各モデル（要素数3）
-                array_push($books_all, $books_relation);
+                // array_push($books_all, $books_relation);
                 }
             }
+            array_push($books_relation, $book_information);
+            array_push($books_all, $books_relation);
         }
         return $books_all;
     }

@@ -37,5 +37,13 @@ class BookInformationTableSeeder extends Seeder
             'published' => '2021-06-10',
         ];
         DB::table('book_information')->insert($param);
+
+        $param = [
+            'title' => 'これからはじめるVue.js実践入門',
+            'author' => '山田祥寛',
+            'publisher' => 'SBクリエイティブ',
+            'published' => '2019/8/21',
+        ];
+        DB::table('book_information')->insert($param);
     }
 }
