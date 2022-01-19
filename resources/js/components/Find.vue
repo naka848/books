@@ -6,6 +6,10 @@
 
     <!-- これ表示されないのなんでだろう？ -->
     {{ data.books }}
+    <br>
+    {{ data.test }}
+
+    
 
     <!-- <FindC
       v-for="data in data.books"
@@ -30,6 +34,7 @@ export default {
     const data = reactive({
       find: "vue",
       books: [],
+      test: "test",
     });
 
     const getData = async () => {
@@ -38,10 +43,13 @@ export default {
         "http://127.0.0.1:8000/api/book_information" + querry
       );
 
+      // 子コンポーネントに送るデータの初期化
+      data.books = []
+
       // console.log(result.data);
 
       result.data.map((item) => {
-        // 書籍ごとの情報をまとめる配列を定義／初期化
+        // 書籍ごとの情報をまとめる配列の定義／初期化
         let book_list = [];
 
         const book_info = item[0];
@@ -53,7 +61,7 @@ export default {
         book_list.title = book_info.title;
         book_list.books = book_info.books;
 
-        // 貸出可能な本の冊数を記録する配列
+        // 貸出可能な本の冊数を記録する配列の定義／初期化
         const availability_ary = [];
 
         // book_idごとに貸出可能な状態か調べ、
