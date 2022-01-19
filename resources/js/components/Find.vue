@@ -7,9 +7,7 @@
     <!-- これ表示されないのなんでだろう？ -->
     {{ data.books }}
     <br>
-    {{ data.test }}
-
-    
+    <!-- {{ data }} -->
 
     <!-- <FindC
       v-for="data in data.books"
@@ -34,7 +32,6 @@ export default {
     const data = reactive({
       find: "vue",
       books: [],
-      test: "test",
     });
 
     const getData = async () => {
@@ -44,22 +41,43 @@ export default {
       );
 
       // 子コンポーネントに送るデータの初期化
-      data.books = []
+      data.books = [];
 
+      // console.log("result.data");
       // console.log(result.data);
 
+      // 要素のコピーを渡している
       result.data.map((item) => {
         // 書籍ごとの情報をまとめる配列の定義／初期化
         let book_list = [];
 
         const book_info = item[0];
+        // const book_list = item[0]
+
+        // 参照渡しはうまくいく
+        // data.books = book_info;
+        // console.log(data.books);
 
         // 子コンポーネントに送りたい情報をbook_listに追加
         book_list.author = book_info.author;
+
+        // 参照渡しはうまくいく
+        // data.books = book_list.author;
+        // console.log(data.books);
+
+        // これはうまくいかない！！
+        data.books.push(book_list);
+        console.log(data.books);
+
         book_list.published = book_info.published;
         book_list.publisher = book_info.publisher;
         book_list.title = book_info.title;
         book_list.books = book_info.books;
+
+        // この時点でうまくいってない
+        // console.log(book_list);
+        // data.books = book_list;
+        
 
         // 貸出可能な本の冊数を記録する配列の定義／初期化
         const availability_ary = [];
@@ -69,6 +87,7 @@ export default {
         book_list.books.forEach(element => {
           // console.log(element);
           if(element.availability === 1){
+            // push()は参照を扱うので、元の配列も変化する
             availability_ary.push(1)
           }
         });
@@ -85,11 +104,14 @@ export default {
 
         // 書籍ごとの情報をまとめた配列を、子コンポーネントに渡す配列に追加
         data.books.push(book_list);
-
+        // console.log(data.books);
       });
 
-      console.log("data.books"); 
-      console.log(data.books);
+      // console.log("data.books"); 
+      // console.log(data.books);
+
+      console.log("result.data");
+      console.log(result.data);
 
     };
 

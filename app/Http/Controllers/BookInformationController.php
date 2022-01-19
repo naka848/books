@@ -14,23 +14,6 @@ class BookInformationController extends Controller
      */
     public function index()
     {
-        // $book_informations = BookInformation::all();
-        // $books_all=[];
-        // foreach ($book_informations as $book_information) {
-        //     // hasMany()のリレーションを分解
-        //     foreach ($book_information->books as $book) {
-        //         // ループ毎に初期化
-        //         $books_relation=[];
-        //         // その本の情報をいれる
-        //         array_push($books_relation, $book_information);
-        //         // (複数ある本の)それぞれの情報を追加
-        //         array_push($books_relation, $book);
-        //         // APIで渡す配列に追加
-        //         array_push($books_all, $books_relation);
-        //     }
-        // }
-        // return $books_all;
-
         $books = BookInformation::all();
         return $books;
     }

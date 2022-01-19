@@ -29,6 +29,8 @@ export default{
             published: "",
         });
 
+    // 書籍情報を追加
+    // →BookInformationControllerのstoreアクション
     const getData = async () => {
       const result = await axios.post(
         "http://127.0.0.1:8000/api/book_information",
