@@ -10,22 +10,21 @@
 <script>
 import axios from "axios";
 
-export default{
-    name: "Borrow",
-    setup() {
-        const borrow_event = async () => {
-            const result = await axios.post(
-                "http://127.0.0.1:8000/api/rentals",
-                {
-                  // book_information_id: 1,
-                  // book_id: 1,
-                  user_id: 6,
-                  checkout_date: "2022-01-19",
-                }
-            );
-            console.log(result);
+export default {
+  name: "Borrow",
+  setup() {
+    const borrow_event = async () => {
+      const result = await axios.post(
+        "http://127.0.0.1:8000/api/rentals", 
+        {
+          user_id: 6,
+          book_id: 1,
+          checkout_date: "2022-01-19",
         }
-        return { borrow_event };
-    },
-}
+      );
+      console.log(result);
+    };
+    return { borrow_event };
+  },
+};
 </script>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Rental;
 use Illuminate\Http\Request;
 
 class RentalController extends Controller
@@ -24,21 +25,27 @@ class RentalController extends Controller
      */
     public function store(Request $request)
     {
-        // // Rentalモデルのインスタンスを新規作成
-        // $rental = new Rental;
-        // // 属性の代入を fill メソッドで保護
-        // $rental->fill($request->all());
-        // // $rentalの内容をテーブル(DB)に保存
-        // $rental->save()
 
+        dd($request);
 
+        // ➀create メソッド
+        // $recipe = Rental::create([
+        //     'user_id' => 6,
+        //     'book_id' => 1,
+        //     'checkout_date' => '2022-01-19',
+        // ]);
 
-
-
-
-        
-
-        $rental = Rental::create(['user_id' => 6,'checkout_date' => '2022-01-19']);
+        // ➁fill メソッド → save メソッド
+        // Rentalモデルのインスタンスを新規作成
+        $rental = new Rental();
+        // 属性の代入を fill メソッドで保護
+        $rental->fill([
+            'user_id' => 6,
+            'book_id' => 1,
+            'checkout_date' => '2022-01-19',
+        ]);
+        // $rentalの内容をテーブル(DB)に保存
+        $rental->save();
     }
 
     /**

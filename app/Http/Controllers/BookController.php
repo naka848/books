@@ -43,9 +43,7 @@ class BookController extends Controller
 
     public function show($id)
     {
-        // レンタルできるできない情報をまとめたJSONデータをつくりたい(かきかけ！！)
-        // $book = Book::where('book_information_id',1);
-        // $rentable = [];
+        // 
     }
 
     /**
