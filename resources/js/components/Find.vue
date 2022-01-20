@@ -4,16 +4,15 @@
     <input type="text" v-model="data.find" />
     <button @click="getData">検索</button>
 
-    <!-- これ表示されないのなんでだろう？ -->
-    {{ data.books }}
-    <br>
-    <!-- {{ data }} -->
+    <!-- {{ data.books[0] }} -->
+    <br />
+    <!-- 配列の中にキーが入ってて指定できない -->
+    {{ data.books.book_information_id }}
 
     <!-- <FindC
-      v-for="data in data.books"
-      v-bind:book_list="data"
-      キー確認！！
-      v-bind:key="data.book_id"
+      v-for="book in data.books"
+      v-bind:book_list="book"
+      v-bind:key="data.books.book_information_id"
     /> -->
   </div>
 </template>
@@ -21,13 +20,9 @@
 <script>
 import { reactive } from "vue";
 import axios from "axios";
-// import FindC from "./FindC";
 
 export default {
   name: "Find",
-  // components: {
-  //   FindC,
-  // },
   setup() {
     const data = reactive({
       find: "vue",
@@ -43,41 +38,12 @@ export default {
       // 子コンポーネントに送るデータの初期化
       data.books = [];
 
-      // console.log("result.data");
-      // console.log(result.data);
-
       // 要素のコピーを渡している
       result.data.map((item) => {
-        // 書籍ごとの情報をまとめる配列の定義／初期化
-        let book_list = [];
+        // 書籍ごとの情報をまとめる配列の定義
+        const book_list = item[0];
 
-        const book_info = item[0];
-        // const book_list = item[0]
-
-        // 参照渡しはうまくいく
-        // data.books = book_info;
-        // console.log(data.books);
-
-        // 子コンポーネントに送りたい情報をbook_listに追加
-        book_list.author = book_info.author;
-
-        // 参照渡しはうまくいく
-        // data.books = book_list.author;
-        // console.log(data.books);
-
-        // これはうまくいかない！！
-        data.books.push(book_list);
-        console.log(data.books);
-
-        book_list.published = book_info.published;
-        book_list.publisher = book_info.publisher;
-        book_list.title = book_info.title;
-        book_list.books = book_info.books;
-
-        // この時点でうまくいってない
         // console.log(book_list);
-        // data.books = book_list;
-        
 
         // 貸出可能な本の冊数を記録する配列の定義／初期化
         const availability_ary = [];
@@ -85,11 +51,10 @@ export default {
         // book_idごとに貸出可能な状態か調べ、
         // 貸出可能であれば記録用の配列に「1」を追加する
         book_list.books.forEach(element => {
-          // console.log(element);
-          if(element.availability === 1){
-            // push()は参照を扱うので、元の配列も変化する
-            availability_ary.push(1)
-          }
+            if(element.availability === 1){
+                // push()は参照を扱うので、元の配列も変化する
+                availability_ary.push(1)
+            }
         });
 
         // book_information_idごとに貸出可能な状態か調べる
@@ -104,19 +69,13 @@ export default {
 
         // 書籍ごとの情報をまとめた配列を、子コンポーネントに渡す配列に追加
         data.books.push(book_list);
-        // console.log(data.books);
       });
 
-      // console.log("data.books"); 
-      // console.log(data.books);
-
-      console.log("result.data");
-      console.log(result.data);
+      console.log("data.books");
+      console.log(data.books);
 
     };
-
     return { data, getData };
   },
 };
 </script>
-
