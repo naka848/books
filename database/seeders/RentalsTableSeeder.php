@@ -34,7 +34,6 @@ class RentalsTableSeeder extends Seeder
             'user_id' => 3,
             'book_id' => 3,
             'checkout_date' => '2021-11-15',
-            'return_date' => '2021-11-14',
         ];
         DB::table('rentals')->insert($param);
 

@@ -4,25 +4,29 @@
     <input type="text" v-model="data.find" />
     <button @click="getData">検索</button>
 
-    <!-- {{ data.books[0] }} -->
+    <!-- {{ data.books }} -->
     <br />
     <!-- 配列の中にキーが入ってて指定できない -->
-    {{ data.books.book_information_id }}
+    <!-- {{ data.books.book_information_id }} -->
 
-    <!-- <FindC
+    <FindC
       v-for="book in data.books"
       v-bind:book_list="book"
-      v-bind:key="data.books.book_information_id"
-    /> -->
+      v-bind:key="book.book_information_id"
+    />
   </div>
 </template>
 
 <script>
 import { reactive } from "vue";
 import axios from "axios";
+import FindC from "./FindC";
 
 export default {
   name: "Find",
+  components: {
+    FindC,
+  },
   setup() {
     const data = reactive({
       find: "vue",

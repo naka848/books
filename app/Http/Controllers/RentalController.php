@@ -24,12 +24,21 @@ class RentalController extends Controller
      */
     public function store(Request $request)
     {
-        // Rentalモデルのインスタンスを新規作成
-        $rental = new Rental;
-        // 属性の代入を fill メソッドで保護
-        $rental->fill($request->all());
-        // $rentalの内容をテーブル(DB)に保存
-        $rental->save();
+        // // Rentalモデルのインスタンスを新規作成
+        // $rental = new Rental;
+        // // 属性の代入を fill メソッドで保護
+        // $rental->fill($request->all());
+        // // $rentalの内容をテーブル(DB)に保存
+        // $rental->save()
+
+
+
+
+
+
+        
+
+        $rental = Rental::create(['user_id' => 6,'checkout_date' => '2022-01-19']);
     }
 
     /**
