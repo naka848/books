@@ -27,9 +27,10 @@ export const router = createRouter({
             component: Find2,
         },
         {
-            path: '/borrow',
+            path: '/borrow/:book_id',
             name: 'borrow',
             component: Borrow,
+            props: true,
         },
         {
             path: '/create',
@@ -40,3 +41,5 @@ export const router = createRouter({
 })
 
 export default router
+
+
