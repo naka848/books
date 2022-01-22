@@ -4,7 +4,7 @@
     {{ book_list.publisher }} ({{ book_list.published }}) 貸出状態 :
     {{ book_list.availability }}
     <button v-if="book_list.availability" @click="sendData">借りる</button>
-    
+
     <!-- <Borrow
       v-bind:book_id="book_id"
     /> -->
@@ -28,8 +28,14 @@ export default {
       book_id: "",
     });
     const sendData = () => {
-      data.book_id = props.book_list.available_book_id;
-      console.log(data.book_id[0]);
+      // 本を借りる処理をするページに飛ぶ
+      // うまく動くか未確認！！
+      // window.location.href = "http://127.0.0.1:8000/borrow";
+
+      // data.book_id = props.book_list.available_book_id;
+      // console.log(data.book_id[0]);
+
+      console.log("test");
     };
     return { data, sendData };
   },

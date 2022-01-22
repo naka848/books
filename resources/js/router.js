@@ -5,6 +5,7 @@ import Find from "./components/Find";
 import Find2 from "./components/Find2";
 import Borrow from "./components/Borrow";
 import Create from "./components/Create";
+import Test from "./components/Test";
 
 export const router = createRouter({
     history: createWebHistory(),
@@ -27,16 +28,22 @@ export const router = createRouter({
             component: Find2,
         },
         {
-            path: '/borrow/:book_id',
+            // path: '/borrow/:book_id',
+            path: '/borrow',
             name: 'borrow',
             component: Borrow,
-            props: true,
+            // props: true,
         },
         {
             path: '/create',
             name: 'create',
             component: Create,
-        }
+        },
+        {
+            path: '/test',
+            name: 'test',
+            component: Test,
+        },
     ]
 })
 

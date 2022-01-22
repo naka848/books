@@ -6,7 +6,12 @@ export const store = createStore({
         return{
             message: 'This is store data.'
         }
-    }
+    },
+    // mutations: {
+    //     change: (state)=> {
+    //         state.message = 'Happy!'
+    //     }
+    // },
 })
 
 export default store
