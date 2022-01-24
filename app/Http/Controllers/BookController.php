@@ -55,7 +55,12 @@ class BookController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // dd($request);
+        // →中身:"availability" => false
+        // dd($id);
+        // →中身:target_book_idの値
+        Book::where('book_id',$id )
+            ->update(['availability' => $request->availability]);
     }
 
     /**

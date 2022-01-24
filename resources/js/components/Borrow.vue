@@ -1,9 +1,6 @@
 <template>
   <div>
     <h3>本を借りる</h3>
-
-    <!-- book_list : {{ $store.state.book_list }} -->
-
     「{{ $store.state.book_list[0].title }}」
     {{ $store.state.book_list[0].author }} 著 出版 :
     {{ $store.state.book_list[0].publisher }} ({{
@@ -11,8 +8,6 @@
     }}) 貸出状態 :
     {{ $store.state.book_list[0].availability }}
     <br />
-    <br />
-
     <dl>
       <dt>ユーザーID</dt>
       <dd>
@@ -20,17 +15,10 @@
       </dd>
       <dt>貸出日</dt>
       <dd>
-        <input
-          type="date"
-          v-model="data.checkout_date"
-          name="today"
-          id="today"
-        />
+        <input type="date" v-model="data.checkout_date" />
       </dd>
     </dl>
     <button @click="borrow_event">借りる</button>
-
-    {{ data.user_id }}
   </div>
 </template>
 
@@ -43,11 +31,13 @@ export default {
   name: "Borrow",
   setup() {
     const data = reactive({
-      user_id: "1",
+      user_id: "",
       checkout_date: "",
     });
+
     const store = useStore();
 
+    // 貸出日にデフォルトで今日の日付を表示
     onMounted(() => {
       const today = new Date();
       today.setDate(today.getDate());
@@ -57,19 +47,24 @@ export default {
       data.checkout_date = yyyy + "-" + mm + "-" + dd;
     });
 
-    console.log(store.state.book_list);
-
     const borrow_event = async () => {
-      const result = await axios.post("http://127.0.0.1:8000/api/rentals", {
+
+      const target_book_id = store.state.book_list[0].available_book_id[0];
+      // console.log('target_book_id');
+      // console.log(target_book_id);
+
+      // rentalsテーブルに貸出データを追加
+      await axios.post("http://127.0.0.1:8000/api/rentals", {
         user_id: data.user_id,
-        book_id: 1,
+        book_id: target_book_id,
         checkout_date: data.checkout_date,
       });
-      console.log("result");
-      console.log(result.data);
 
-      // console.log($store.state.book_list);
-      // console.log($store.state.book_list[0].available_book_id);
+      // booksテーブルの、貸出されたbook_idのavailabilityをfalseに変更
+      await axios.patch("http://127.0.0.1:8000/api/books/" + target_book_id, {
+        availability: 0,
+      });
+
     };
     return { data, onMounted, borrow_event };
   },
