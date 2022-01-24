@@ -7,17 +7,11 @@
       v-if="book_list.availability"
       @click="
         $store.commit({ type: 'update', bookList: book_list });
-        transit();">
+        transit();
+      "
+    >
       借りる
     </button>
-
-    <br>
-    <br>
-
-    <!-- 確認用、後で消す -->
-    <!-- 配列に配列を入れるのでまたややこくなっちゃうな… -->
-    book_list : {{ $store.state.book_list }}
-
   </div>
 </template>
 

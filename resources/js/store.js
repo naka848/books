@@ -1,21 +1,22 @@
 import { createStore } from 'vuex';
+import createPersistedState from 'vuex-persistedstate'
 
 export const store = createStore({
-    state(){
-        return{
-            book_list:[],
-            // available_book_id: [],
+    state() {
+        return {
+            book_list: [],
         }
     },
+
     mutations: {
-        update: (state,obj)=> {
+        update: (state, obj) => {
             // 配列の初期化
             state.book_list = []
             // データの受け取り
             state.book_list.push(obj.bookList)
 
-            // state.available_book_id = []
-            // state.available_book_id.push(obj.id)
+            console.log('store.state.book_list');
+            console.log(store.state.book_list);
 
         },
 
@@ -33,7 +34,13 @@ export const store = createStore({
     //         context.commit('count',n)
     //         context.commit('say','add'+n)
     //     },
-    // }
+    // },
+    plugins: [
+        createPersistedState(),
+    ],
 })
 
 export default store
+
+// console.log('store.state.book_list');
+// console.log(store.state.book_list);

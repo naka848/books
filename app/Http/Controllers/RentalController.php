@@ -27,9 +27,9 @@ class RentalController extends Controller
     {
         // ➀create メソッド
         $recipe = Rental::create([
-            'user_id' => 6,
-            'book_id' => 1,
-            'checkout_date' => '2022-01-19',
+            'user_id' => $request->user_id,
+            'book_id' => $request->book_id,
+            'checkout_date' => $request->checkout_date,
         ]);
 
         // ➁fill メソッド → save メソッド
