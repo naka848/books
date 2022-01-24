@@ -51,16 +51,3 @@ export default {
   },
 };
 </script>
-
-<style>
-dl dt {
-  width: 100px;
-  padding: 10px 0;
-  float: left;
-  clear: both;
-}
-
-dl dd {
-  padding: 10px 0;
-}
-</style>

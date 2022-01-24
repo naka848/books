@@ -30,6 +30,7 @@ export default {
   setup() {
     const data = reactive({
       find: "vue",
+      // 送りたい情報がここにまとまる
       books: [],
     });
 
