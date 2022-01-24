@@ -4,6 +4,7 @@ import ListP from "./components/ListP";
 import Find from "./components/Find";
 import Find2 from "./components/Find2";
 import Borrow from "./components/Borrow";
+import Return from "./components/Return";
 import Create from "./components/Create";
 import Test from "./components/Test";
 
@@ -28,11 +29,14 @@ export const router = createRouter({
             component: Find2,
         },
         {
-            // path: '/borrow/:book_id',
             path: '/borrow',
             name: 'borrow',
             component: Borrow,
-            // props: true,
+        },
+        {
+            path: '/return',
+            name: 'return',
+            component: Return,
         },
         {
             path: '/create',

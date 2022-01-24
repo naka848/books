@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>書籍返却</h1>
+        <h3>書籍返却</h3>
     </div>
 </template>
 
