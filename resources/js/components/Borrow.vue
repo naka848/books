@@ -66,7 +66,7 @@ export default {
       });
 
     };
-    return { data, onMounted, borrow_event };
+    return { data, borrow_event };
   },
 };
 </script>

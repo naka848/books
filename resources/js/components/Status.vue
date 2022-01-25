@@ -7,7 +7,6 @@
     </dl>
     <button @click="getData">検索</button>
 
-    <!-- キー確認！！ -->
     <StatusC
       v-for="book in data.book_info"
       v-bind:book_list="book"

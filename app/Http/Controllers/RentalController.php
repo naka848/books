@@ -55,7 +55,11 @@ class RentalController extends Controller
      */
     public function show($id)
     {
-        $rentals = Rental::where('user_id', $id)->get();
+        // 特定のユーザーの、返していない本のデータを集める
+        $rentals = Rental::where([
+            ['user_id', $id],
+            ['return_date',null],
+        ])->get();
         // 送るデータをまとめるための配列の定義／初期化
         $rental_info=[];
         // コレクション
@@ -66,7 +70,8 @@ class RentalController extends Controller
             // book_information_id
             // dd($rental->books->book_information_id);
             // 現在借りている本の情報を取りに行く
-            $book_info = BookInformation::where('book_information_id', $rental->books->book_information_id)->get();
+            $book_info = BookInformation::where('book_information_id', $rental->books->book_information_id)->first();
+            // get()でとってくると、コレクションになる
             // dd($book_info);
             // 本の情報を配列に追加
             array_push($rental_info, $book_info);
@@ -84,7 +89,8 @@ class RentalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Rental::where('rental_id',$id )
+            ->update(['return_date' => $request->return_date]);
     }
 
     /**
