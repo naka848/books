@@ -33,7 +33,7 @@ export default {
     });
 
     const getData = async () => {
-      console.log(data.user_id);
+      // console.log(data.user_id);
 
       const querry = "/" + data.user_id;
       //showアクションへ
@@ -43,7 +43,7 @@ export default {
       // console.log("Status-result");
       // console.log(result);
       data.book_info = result.data;
-      console.log(data.book_info);
+      // console.log(data.book_info);
     };
 
     return { data, getData };

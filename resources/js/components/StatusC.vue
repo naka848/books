@@ -1,7 +1,10 @@
 <template>
   <div>
-    「{{ book_list.title }}」 {{ book_list.author }} 著 出版 :
-    {{ book_list.publisher }} ({{ book_list.published }}) 
+    <!-- {{book_list[0]}}
+    {{book_list[1]}} -->
+    <br>
+    <br>
+    「{{ book_list[1].title }}」 {{ book_list[1].author }} 著 
     <button @click="transit">返す</button>
   </div>
 </template>

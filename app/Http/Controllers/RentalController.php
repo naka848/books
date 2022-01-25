@@ -27,24 +27,11 @@ class RentalController extends Controller
      */
     public function store(Request $request)
     {
-        // ➀create メソッド
         $recipe = Rental::create([
             'user_id' => $request->user_id,
             'book_id' => $request->book_id,
             'checkout_date' => $request->checkout_date,
         ]);
-
-        // ➁fill メソッド → save メソッド
-        // Rentalモデルのインスタンスを新規作成
-        // $rental = new Rental();
-        // 属性の代入を fill メソッドで保護
-        // $rental->fill([
-        //     'user_id' => 6,
-        //     'book_id' => 1,
-        //     'checkout_date' => '2022-01-19',
-        // ]);
-        // $rentalの内容をテーブル(DB)に保存
-        // $rental->save();
     }
 
     /**
@@ -61,12 +48,15 @@ class RentalController extends Controller
             ['return_date',null],
         ])->get();
         // 送るデータをまとめるための配列の定義／初期化
-        $rental_info=[];
+        $rental_lists=[];
         // コレクション
         // dd($rentals);
         foreach ($rentals as $rental) {
+            $rental_list=[];
             // モデル
             // dd($rental);
+            // rental_idを配列に追加
+            array_push($rental_list, $rental->rental_id);
             // book_information_id
             // dd($rental->books->book_information_id);
             // 現在借りている本の情報を取りに行く
@@ -74,10 +64,12 @@ class RentalController extends Controller
             // get()でとってくると、コレクションになる
             // dd($book_info);
             // 本の情報を配列に追加
-            array_push($rental_info, $book_info);
+            array_push($rental_list, $book_info);
+            // 送るデータ用配列にpush
+            array_push($rental_lists, $rental_list);
         }
-        // dd($rental_info);
-        return $rental_info;
+        // dd($rental_lists);
+        return $rental_lists;
     }
 
     /**
