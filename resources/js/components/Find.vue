@@ -29,6 +29,7 @@ export default {
   },
   setup() {
     const data = reactive({
+      // "vue"は後で""に直す
       find: "vue",
       // 送りたい情報がここにまとまる
       books: [],

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Rental;
+use App\Models\Book;
+use App\Models\BookInformation;
 use Illuminate\Http\Request;
 
 class RentalController extends Controller
@@ -53,7 +55,24 @@ class RentalController extends Controller
      */
     public function show($id)
     {
-        //
+        $rentals = Rental::where('user_id', $id)->get();
+        // 送るデータをまとめるための配列の定義／初期化
+        $rental_info=[];
+        // コレクション
+        // dd($rentals);
+        foreach ($rentals as $rental) {
+            // モデル
+            // dd($rental);
+            // book_information_id
+            // dd($rental->books->book_information_id);
+            // 現在借りている本の情報を取りに行く
+            $book_info = BookInformation::where('book_information_id', $rental->books->book_information_id)->get();
+            // dd($book_info);
+            // 本の情報を配列に追加
+            array_push($rental_info, $book_info);
+        }
+        // dd($rental_info);
+        return $rental_info;
     }
 
     /**

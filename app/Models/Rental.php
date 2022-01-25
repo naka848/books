@@ -17,4 +17,10 @@ class Rental extends Model
 
     // id以外の主キーを設定
     protected $primaryKey = 'rental_id';
+
+    // リレーション
+    public function books()
+    {
+        return $this->belongsTo('App\Models\Book','book_id','book_id');
+    }
 }
