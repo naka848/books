@@ -1,53 +1,45 @@
 <template>
   <div>
-    <h3>書籍情報登録</h3>
-    <dl>
-      <dt>タイトル</dt>
-      <dd><input type="text" v-model="data.title" /></dd>
-      <dt>著者名</dt>
-      <dd><input type="text" v-model="data.author" /></dd>
-      <dt>出版社名</dt>
-      <dd><input type="text" v-model="data.publisher" /></dd>
-      <dt>出版日</dt>
-      <dd><input type="date" v-model="data.published" /></dd>
-    </dl>
-    <button @click="getData">登録</button>
+    <h3>書籍情報削除</h3>
+    <DeleteInfoC
+      v-for="data in data.book_list"
+      v-bind:book_list="data"
+      v-bind:key="data.book_id"
+    />
   </div>
 </template>
 
 <script>
 import { reactive } from "vue";
+import { useStore } from "vuex";
 import axios from "axios";
+import DeleteInfoC from "./DeleteInfoC";
 
 export default {
-  name: "CreateInfo",
+  name: "DeleteInfo",
+    components: {
+    DeleteInfoC,
+  },
   setup() {
     const data = reactive({
-      title: "",
-      author: "",
-      publisher: "",
-      published: "",
+      book_list: [],
     });
+    const store = useStore();
 
-    // 書籍情報を追加
-    // →BookInformationControllerのstoreアクション
-    const getData = async () => {
-      const result = await axios.post(
-        "http://127.0.0.1:8000/api/book_information",
-        {
-          title: data.title,
-          author: data.author,
-          publisher: data.publisher,
-          published: data.published,
-        }
-      );
-      console.log(result);
-
-      //登録が完了したら書籍情報一覧ページへとぶ
-      window.location.href = "http://127.0.0.1:8000/list";
+    // Storeのactionへ
+    // 書籍情報一覧データ取得
+    const getBookList = async () => {
+      const result = await store.dispatch("getBookList");
+      data.book_list = result;
+      // console.log(data.book_list);
     };
+    
+    getBookList();
 
-    return { data, getData };
+    return {
+      data,
+      getBookList,
+    };
   },
 };
 </script>

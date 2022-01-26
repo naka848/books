@@ -87,6 +87,7 @@ class BookInformationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // dd($id);
+        BookInformation::destroy($id);
     }
 }

@@ -24,9 +24,6 @@ export const store = createStore({
         // 本の一覧／書籍情報の削除にて使用
         call: (state,obj) => {
             state.book_info_list = obj.concat();
-            console.log('mutations');
-            console.log(store.state.book_info_list);
-            console.log(store.state.book_info_list[0].title);
         },
     },
     actions:{
@@ -34,8 +31,6 @@ export const store = createStore({
         getBookList: async (context)=>{
             const url = "http://127.0.0.1:8000/api/book_information";
             const result = await axios.get(url);
-            console.log('actions');
-            console.log(result.data);
             context.commit('call',result.data);
             return store.state.book_info_list;
         }
@@ -46,6 +41,3 @@ export const store = createStore({
 })
 
 export default store
-
-// console.log('store.state.book_list');
-// console.log(store.state.book_list);
