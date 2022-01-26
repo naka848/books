@@ -5,9 +5,9 @@ import Find from "./components/Find";
 import Find2 from "./components/Find2";
 import Borrow from "./components/Borrow";
 import Status from "./components/Status";
-import Return from "./components/Return";
-import Create from "./components/Create";
-import Test from "./components/Test";
+import CreateInfo from "./components/CreateInfo";
+import DeleteInfo from "./components/DeleteInfo";
+// import Test from "./components/Test";
 
 export const router = createRouter({
     history: createWebHistory(),
@@ -40,20 +40,20 @@ export const router = createRouter({
             component: Status,
         },
         {
-            path: '/return',
-            name: 'return',
-            component: Return,
+            path: '/createInfo',
+            name: 'createInfo',
+            component: CreateInfo,
         },
         {
-            path: '/create',
-            name: 'create',
-            component: Create,
+            path: '/deleteInfo',
+            name: 'deleteInfo',
+            component: DeleteInfo,
         },
-        {
-            path: '/test',
-            name: 'test',
-            component: Test,
-        },
+        // {
+        //     path: '/test',
+        //     name: 'test',
+        //     component: Test,
+        // },
     ]
 })
 

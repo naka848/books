@@ -64,7 +64,8 @@ export default {
       await axios.patch("http://127.0.0.1:8000/api/books/" + target_book_id, {
         availability: 0,
       });
-
+      // 貸出状況のページへ（statusコンポーネントへ）
+      window.location.href = "http://127.0.0.1:8000/status";
     };
     return { data, borrow_event };
   },

@@ -20,7 +20,7 @@ import { reactive } from "vue";
 import axios from "axios";
 
 export default {
-  name: "Create",
+  name: "CreateInfo",
   setup() {
     const data = reactive({
       title: "",
@@ -44,7 +44,7 @@ export default {
       console.log(result);
 
       //登録が完了したら書籍情報一覧ページへとぶ
-      window.location.href = "http://127.0.0.1:8000/listBI";
+      window.location.href = "http://127.0.0.1:8000/list";
     };
 
     return { data, getData };

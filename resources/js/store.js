@@ -14,10 +14,8 @@ export const store = createStore({
             state.book_list = []
             // データの受け取り
             state.book_list.push(obj.bookList)
-
-            console.log('store.state.book_list');
-            console.log(store.state.book_list);
-
+            // console.log('store.state.book_list');
+            // console.log(store.state.book_list);
         },
 
         // actionの利用
