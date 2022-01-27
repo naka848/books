@@ -16,6 +16,9 @@ class DatabaseSeeder extends Seeder
         $this->call(BookInformationTableSeeder::class);
         $this->call(BooksTableSeeder::class);
         $this->call(RentalsTableSeeder::class);
+        // UsersTableのseederを作成
+        // 内容：database>Factories>UserFactory.php
+        \App\Models\User::factory(10)->create();
     }
 
 }
