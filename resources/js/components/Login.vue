@@ -27,7 +27,8 @@ export default {
 
     const loginAction = async () => {
       await axios.get("/sanctum/csrf-cookie").then(response => {
-        // ログインデータを送る！…どこに？
+        // ログインデータを送る！
+        // ログインコントローラーへのあくせすはどうやる？
       });
     };
 

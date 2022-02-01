@@ -20245,7 +20245,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return axios__WEBPACK_IMPORTED_MODULE_2___default().get("/sanctum/csrf-cookie").then(function (response) {// ログインデータを送る！…どこに？
+                return axios__WEBPACK_IMPORTED_MODULE_2___default().get("/sanctum/csrf-cookie").then(function (response) {// ログインデータを送る！
+                  // ログインコントローラーへのあくせすはどうやる？
                 });
 
               case 2:

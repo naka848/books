@@ -7,13 +7,19 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\BookInformationController;
 use App\Http\Controllers\RentalController;
+use App\Http\Controllers\LoginController;
 
+// 受信リクエストがSPAからのステートフル認証済みリクエストとして認証されるか、
+// リクエストがサードパーティからのものである場合は有効なAPIトークンヘッダを含むことを保証する
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Laravel8から書き方が変更された
+// Laravel8から書き方が変更された!
 // apiに対応したrestfulにしておく
+// VueRouter
 Route::apiResource('/books',BookController::class);
 Route::apiResource('/book_information',BookInformationController::class);
 Route::apiResource('/rentals',RentalController::class);
+// 手動
+Route::get('/login', [LoginController::class, 'authenticate']);
