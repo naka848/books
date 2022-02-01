@@ -8,6 +8,7 @@
 <script>
 import { reactive } from "vue";
 import axios from "axios";
+import dayjs from 'dayjs';
 
 export default {
   name: "StatusC",
@@ -17,14 +18,14 @@ export default {
   setup(props) {
     const data = reactive({
       rental_id: props.book_list[0],
-      current_date: "2022-01-23",
+      current_date: '',
     });
 
     // 返却処理
-    // 返却する本のrental_idの返却日に今日の日付を入力する
     const returnAction = async () => {
-      console.log(data.rental_id);
-      console.log(data.current_date);
+      const now = dayjs(); 
+      // 返却日に今日の日付を入力する
+      data.current_date = now.format('YYYY-MM-DD');
       // rentalsテーブルのreturn_dateに返却ボタンが押された日の日付を入力
       await axios.patch("http://127.0.0.1:8000/api/rentals/" + data.rental_id, {
         return_date: data.current_date,

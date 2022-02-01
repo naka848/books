@@ -25,6 +25,7 @@
 <script>
 import { onMounted, reactive } from "vue";
 import { useStore } from "vuex";
+import dayjs from "dayjs";
 import axios from "axios";
 
 export default {
@@ -39,19 +40,12 @@ export default {
 
     // 貸出日にデフォルトで今日の日付を表示
     onMounted(() => {
-      const today = new Date();
-      today.setDate(today.getDate());
-      const yyyy = today.getFullYear();
-      const mm = ("0" + (today.getMonth() + 1)).slice(-2);
-      const dd = ("0" + today.getDate()).slice(-2);
-      data.checkout_date = yyyy + "-" + mm + "-" + dd;
+      const now = dayjs();
+      data.checkout_date = now.format("YYYY-MM-DD");
     });
 
     const borrow_event = async () => {
-
       const target_book_id = store.state.book_list[0].available_book_id[0];
-      // console.log('target_book_id');
-      // console.log(target_book_id);
 
       // rentalsテーブルに貸出データを追加
       await axios.post("http://127.0.0.1:8000/api/rentals", {
