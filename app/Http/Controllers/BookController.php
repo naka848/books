@@ -13,11 +13,11 @@ class BookController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {         
+    {
         $books = Book::all();
         $books_relation=[];
         foreach ($books as $book) {
-            array_push($books_relation,$book->book_information);
+            array_push($books_relation, $book->book_information);
         }
         // eloquantをそのままreturnすると、jsonに変換してくれる。
         return $books_relation;
@@ -32,9 +32,9 @@ class BookController extends Controller
     public function store(Request $request)
     {
         $book = Book::create([
-            'book_information_id' => $request->book_information_id,
-            'purchase_date' => $request->purchase_date,
-            'availability' => 1,
+        'book_information_id' => $request->book_information_id,
+        'purchase_date' => $request->purchase_date,
+        'availability' => 1,
         ]);
     }
 
@@ -47,7 +47,7 @@ class BookController extends Controller
 
     public function show($id)
     {
-        // 
+        //
     }
 
     /**
@@ -59,12 +59,15 @@ class BookController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($request);
-        // →中身:"availability" => false
-        // dd($id);
-        // →中身:target_book_idの値
-        Book::where('book_id',$id )
-            ->update(['availability' => $request->availability]);
+        // 本の貸出処理の場合
+        // availabilityをfalse「0」に変更する
+        Book::where('book_id', $id)->update(['availability' => 0]);
+
+        // この場合、どんな条件で場合分けをしたらよいだろうか
+
+        // 本の返却処理の場合
+        // availabilityをtrue「1」に変更する
+        // Book::where('book_id', $id)->update(['availability' => 1]);
     }
 
     /**

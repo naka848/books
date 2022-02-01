@@ -9,6 +9,7 @@ class Book extends Model
 {
     // 編集可能なカラムを設定
     protected $fillable = [
+        'book_information_id',
         'purchase_date',
         'availability',
     ];

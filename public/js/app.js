@@ -19719,9 +19719,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 3:
                 _context.next = 5;
-                return axios__WEBPACK_IMPORTED_MODULE_3___default().patch("http://127.0.0.1:8000/api/books/" + target_book_id, {
-                  availability: 0
-                });
+                return axios__WEBPACK_IMPORTED_MODULE_3___default().patch("http://127.0.0.1:8000/api/books/" + target_book_id);
 
               case 5:
                 // 貸出状況のページへ（statusコンポーネントへ）
@@ -20496,9 +20494,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 3:
                 result = _context.sent;
-                // console.log("Status-result");
-                // console.log(result);
-                data.book_info = result.data; // console.log(data.book_info);
+                data.book_info = result.data;
 
               case 5:
               case "end":
@@ -20577,9 +20573,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 });
 
               case 4:
-                window.location.href = "http://127.0.0.1:8000/status";
-
-              case 5:
               case "end":
                 return _context.stop();
             }

@@ -40,10 +40,7 @@ export default {
       const result = await axios.get(
         "http://127.0.0.1:8000/api/rentals" + querry
       );
-      // console.log("Status-result");
-      // console.log(result);
       data.book_info = result.data;
-      // console.log(data.book_info);
     };
 
     return { data, getData };

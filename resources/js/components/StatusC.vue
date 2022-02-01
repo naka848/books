@@ -30,7 +30,10 @@ export default {
       await axios.patch("http://127.0.0.1:8000/api/rentals/" + data.rental_id, {
         return_date: data.current_date,
       });
-      window.location.href = "http://127.0.0.1:8000/status";
+      // booksテーブルのavailabilityをtrue「1」に戻す（これからかく！！）
+
+      
+      // window.location.href = "http://127.0.0.1:8000/status";
     };
     return { data, returnAction };
   },
