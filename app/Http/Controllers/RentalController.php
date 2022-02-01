@@ -27,7 +27,7 @@ class RentalController extends Controller
      */
     public function store(Request $request)
     {
-        $recipe = Rental::create([
+        $rental = Rental::create([
             'user_id' => $request->user_id,
             'book_id' => $request->book_id,
             'checkout_date' => $request->checkout_date,

@@ -31,7 +31,11 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $book = Book::create([
+            'book_information_id' => $request->book_information_id,
+            'purchase_date' => $request->purchase_date,
+            'availability' => 1,
+        ]);
     }
 
     /**

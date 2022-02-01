@@ -1,9 +1,9 @@
 <template>
-<div class="wrap">
-  <Header class="header"/>
-  <Sidebar class="sidebar"/>
-  <router-view class="router-view"></router-view>
-</div>
+  <div class="wrap">
+    <Header class="header" />
+    <Sidebar class="sidebar" />
+    <router-view class="router-view"></router-view>
+  </div>
 </template>
 
 <script>
@@ -20,25 +20,29 @@ export default {
 </script>
 
 <style>
-.wrap{
+.wrap {
   width: 900px;
 }
 
-.header{
-  background-color:darkslateblue;
+.header {
+  background-color: darkslateblue;
   color: aliceblue;
   width: 900px;
   height: 70px;
   padding: 10px;
 }
 
-.sidebar{
+.sidebar {
   width: 150px;
   float: left;
   padding: 10px;
 }
 
-.router-view{
+ul {
+  list-style: none;
+}
+
+.router-view {
   background-color: rgb(227, 228, 230);
   width: 700px;
   height: 800px;
@@ -56,5 +60,4 @@ dl dt {
 dl dd {
   padding: 10px 0;
 }
-
 </style>

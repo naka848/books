@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
         // UsersTableのseederを作成
         // 内容：database>Factories>UserFactory.php
         \App\Models\User::factory(10)->create();
+        // パスワードお試し用データ
+        $this->call(UsersTableSeeder::class);
     }
 
 }

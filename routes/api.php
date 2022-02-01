@@ -22,4 +22,4 @@ Route::apiResource('/books',BookController::class);
 Route::apiResource('/book_information',BookInformationController::class);
 Route::apiResource('/rentals',RentalController::class);
 // 手動
-Route::get('/login', [LoginController::class, 'authenticate']);
+Route::post('/login', [LoginController::class, 'authenticate']);

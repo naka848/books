@@ -18,7 +18,7 @@
         </ul>
         <h5>書籍</h5>
         <ul>
-            <li>登録</li>
+            <li><router-link to="/addBook">登録</router-link></li>
             <li>削除</li>
         </ul>
     </div>

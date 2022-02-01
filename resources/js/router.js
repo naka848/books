@@ -8,6 +8,7 @@ import Borrow from "./components/Borrow";
 import Status from "./components/Status";
 import CreateInfo from "./components/CreateInfo";
 import DeleteInfo from "./components/DeleteInfo";
+import AddBook from "./components/AddBook";
 // import Test from "./components/Test";
 
 export const router = createRouter({
@@ -54,6 +55,11 @@ export const router = createRouter({
             path: '/deleteInfo',
             name: 'deleteInfo',
             component: DeleteInfo,
+        },
+        {
+            path: '/addBook',
+            name: 'addBook',
+            component: AddBook,
         },
         // {
         //     path: '/test',
