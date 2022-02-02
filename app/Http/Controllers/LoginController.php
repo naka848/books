@@ -16,12 +16,15 @@ class LoginController extends Controller
             'password' => ['required'],
         ]);
 
+        dd(Auth::attempt($credentials));
+
         // 認証が成功した場合の処理
         if (Auth::attempt($credentials)) {
             // セッションIDの再生成
             $request->session()->regenerate();
             // ログイン後、「dashboard」?? へページ遷移する
-            return redirect()->intended('dashboard');
+            // return redirect()->intended('dashboard');
+            return response()->json(['message' => 'Login successful'], 200);
         }
 
         // 認証が失敗した場合の処理
@@ -32,11 +35,3 @@ class LoginController extends Controller
         ]);
     }
 }
-
-
-
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-
-            return redirect()->intended('dashboard');
-        }

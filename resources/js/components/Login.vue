@@ -24,27 +24,16 @@ export default {
     });
 
     const loginAction = async () => {
-      // これはよさそう
       await axios.get("/sanctum/csrf-cookie");
-      // ここがうまく動いていない
       try {
-        await axios.post("/login", {
+        const result = await axios.post("/api/login", {
           email: data.email,
           password: data.password,
         });
+        console.log(result);
       } catch (e) {
         console.log(e);
       }
-
-      // これもなんかちがうな・・・
-      // await axios.get("/sanctum/csrf-cookie").then((response) => {
-      //   axios.post("/login", {
-      //     email: data.email,
-      //     password: data.password,
-      //   });
-      //   console.log(response);
-      // });
-
     };
 
     return { data, loginAction };

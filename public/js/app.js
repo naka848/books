@@ -20453,6 +20453,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
     var loginAction = /*#__PURE__*/function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var result;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -20463,26 +20464,28 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 2:
                 _context.prev = 2;
                 _context.next = 5;
-                return axios__WEBPACK_IMPORTED_MODULE_2___default().post("/login", {
+                return axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/login", {
                   email: data.email,
                   password: data.password
                 });
 
               case 5:
-                _context.next = 10;
+                result = _context.sent;
+                console.log(result);
+                _context.next = 12;
                 break;
 
-              case 7:
-                _context.prev = 7;
+              case 9:
+                _context.prev = 9;
                 _context.t0 = _context["catch"](2);
                 console.log(_context.t0);
 
-              case 10:
+              case 12:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[2, 7]]);
+        }, _callee, null, [[2, 9]]);
       }));
 
       return function loginAction() {
