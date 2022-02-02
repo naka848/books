@@ -1,11 +1,11 @@
 <template>
   <div>
-    <h3>書籍情報削除</h3>
-    <DeleteInfoC
+    <h3>除籍</h3>
+    <!-- <DeleteInfoC
       v-for="data in data.book_list"
       v-bind:book_list="data"
       v-bind:key="data.book_id"
-    />
+    /> -->
   </div>
 </template>
 
@@ -13,13 +13,13 @@
 import { reactive } from "vue";
 import { useStore } from "vuex";
 // import axios from "axios";
-import DeleteInfoC from "./DeleteInfoC";
+// import DeleteInfoC from "./DeleteInfoC";
 
 export default {
-  name: "DeleteInfo",
-  components: {
-    DeleteInfoC,
-  },
+  name: "DeleteBook",
+  // components: {
+  //   DeleteInfoC,
+  // },
   setup() {
     const data = reactive({
       book_list: [],

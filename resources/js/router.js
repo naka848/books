@@ -9,6 +9,7 @@ import Status from "./components/Status";
 import CreateInfo from "./components/CreateInfo";
 import DeleteInfo from "./components/DeleteInfo";
 import AddBook from "./components/AddBook";
+import DeleteBook from "./components/DeleteBook";
 // import Test from "./components/Test";
 
 export const router = createRouter({
@@ -61,11 +62,11 @@ export const router = createRouter({
             name: 'addBook',
             component: AddBook,
         },
-        // {
-        //     path: '/test',
-        //     name: 'test',
-        //     component: Test,
-        // },
+        {
+            path: '/deleteBook',
+            name: 'deleteBook',
+            component: DeleteBook,
+        },
     ]
 })
 
