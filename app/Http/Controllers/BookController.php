@@ -61,13 +61,13 @@ class BookController extends Controller
     {
         // 本の貸出処理の場合
         // availabilityをfalse「0」に変更する
-        Book::where('book_id', $id)->update(['availability' => 0]);
-
-        // この場合、どんな条件で場合分けをしたらよいだろうか
-
+        if ($request->process == 'B') {
+            Book::where('book_id', $id)->update(['availability' => 0]);
         // 本の返却処理の場合
         // availabilityをtrue「1」に変更する
-        // Book::where('book_id', $id)->update(['availability' => 1]);
+        } else {
+            Book::where('book_id', $id)->update(['availability' => 1]);
+        }
     }
 
     /**

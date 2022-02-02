@@ -19719,7 +19719,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 3:
                 _context.next = 5;
-                return axios__WEBPACK_IMPORTED_MODULE_3___default().patch("http://127.0.0.1:8000/api/books/" + target_book_id);
+                return axios__WEBPACK_IMPORTED_MODULE_3___default().patch("http://127.0.0.1:8000/api/books/" + target_book_id, {
+                  process: 'B'
+                });
 
               case 5:
                 // 貸出状況のページへ（statusコンポーネントへ）
@@ -20536,11 +20538,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var dayjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! dayjs */ "./node_modules/dayjs/dayjs.min.js");
 /* harmony import */ var dayjs__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(dayjs__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 
 
 
@@ -20553,19 +20557,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   setup: function setup(props) {
     var data = (0,vue__WEBPACK_IMPORTED_MODULE_1__.reactive)({
       rental_id: props.book_list[0],
-      current_date: ''
-    }); // 返却処理
+      current_date: ""
+    });
+    var store = (0,vuex__WEBPACK_IMPORTED_MODULE_4__.useStore)(); // 返却処理
 
     var returnAction = /*#__PURE__*/function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-        var now;
+        var now, target_book_id;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 now = dayjs__WEBPACK_IMPORTED_MODULE_3___default()(); // 返却日に今日の日付を入力する
 
-                data.current_date = now.format('YYYY-MM-DD'); // rentalsテーブルのreturn_dateに返却ボタンが押された日の日付を入力
+                data.current_date = now.format("YYYY-MM-DD"); // rentalsテーブルのreturn_dateに返却ボタンが押された日の日付を入力
 
                 _context.next = 4;
                 return axios__WEBPACK_IMPORTED_MODULE_2___default().patch("http://127.0.0.1:8000/api/rentals/" + data.rental_id, {
@@ -20573,6 +20578,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 });
 
               case 4:
+                // booksテーブルのavailabilityをtrue「1」に戻す（これからかく！！）
+                target_book_id = store.state.book_list[0].available_book_id[0];
+                _context.next = 7;
+                return axios__WEBPACK_IMPORTED_MODULE_2___default().patch("http://127.0.0.1:8000/api/books/" + target_book_id, {
+                  process: "R"
+                });
+
+              case 7:
+                window.location.href = "http://127.0.0.1:8000/status";
+
+              case 8:
               case "end":
                 return _context.stop();
             }
