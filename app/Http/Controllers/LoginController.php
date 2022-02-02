@@ -16,7 +16,8 @@ class LoginController extends Controller
             'password' => ['required'],
         ]);
 
-        dd(Auth::attempt($credentials));
+        // dd($credentials);
+        // dd(Auth::attempt($credentials));
 
         // 認証が成功した場合の処理
         if (Auth::attempt($credentials)) {

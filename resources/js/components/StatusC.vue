@@ -33,7 +33,7 @@ export default {
       await axios.patch("http://127.0.0.1:8000/api/rentals/" + data.rental_id, {
         return_date: data.current_date,
       });
-      // booksテーブルのavailabilityをtrue「1」に戻す（これからかく！！）
+      // booksテーブルのavailabilityをtrue「1」に戻す
       const target_book_id = store.state.book_list[0].available_book_id[0];
       await axios.patch("http://127.0.0.1:8000/api/books/" + target_book_id, {
         process: "R",

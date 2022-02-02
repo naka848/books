@@ -1,6 +1,7 @@
 import {createRouter, createWebHistory} from 'vue-router'
 // 必要なコンポーネントをインポート
 import Login from "./components/Login";
+import CreateUser from "./components/CreateUser";
 import ListP from "./components/ListP";
 import Find from "./components/Find";
 import Find2 from "./components/Find2";
@@ -20,6 +21,11 @@ export const router = createRouter({
             path: '/',
             name: 'login',
             component: Login,
+        },
+        {
+            path: '/createUser',
+            name: 'createUser',
+            component: CreateUser,
         },
         {
             path: '/list',

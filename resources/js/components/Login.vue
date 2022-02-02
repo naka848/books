@@ -8,6 +8,8 @@
       <dd><input type="password" v-model="data.password" /></dd>
     </dl>
     <button @click="loginAction">ログイン</button>
+    <p>アカウントをお持ちでない場合はこちらから</p>
+    <router-link to="/createUser">会員登録</router-link>
   </div>
 </template>
 
@@ -25,15 +27,11 @@ export default {
 
     const loginAction = async () => {
       await axios.get("/sanctum/csrf-cookie");
-      try {
-        const result = await axios.post("/api/login", {
-          email: data.email,
-          password: data.password,
-        });
-        console.log(result);
-      } catch (e) {
-        console.log(e);
-      }
+      const result = await axios.post("/api/login", {
+        email: data.email,
+        password: data.password,
+      });
+      console.log(result);
     };
 
     return { data, loginAction };
