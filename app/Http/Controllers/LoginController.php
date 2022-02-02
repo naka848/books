@@ -31,8 +31,9 @@ class LoginController extends Controller
         // 認証が失敗した場合の処理
         // ・前の画面にリダイレクトする
         // ・エラーメッセージを送る
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ]);
+        // return back()->withErrors([
+        //     'email' => 'The provided credentials do not match our records.',
+        // ]);
+        return response()->json(['message' => 'Login failure！']);
     }
 }
