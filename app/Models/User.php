@@ -28,6 +28,8 @@ class User extends Authenticatable
      *
      * @var array
      */
+    // 不要な項目を設定すると、指定した項目は常に取得対象外となる
+    // →データベースの管理項目など普段取得する必要のないもの指定する
     protected $hidden = [
         'password',
         'remember_token',
@@ -38,6 +40,9 @@ class User extends Authenticatable
      *
      * @var array
      */
+    // データアクセス時に型変換をしてくれる
+    // ※Laravelの$query->first()でDBの値を取得すると、
+    // DBのカラムの型がIntegerで定義していたとしても、返り値はすべてStringになる
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
