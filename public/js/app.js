@@ -19954,9 +19954,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 3:
                 result = _context.sent;
-                data.books = result.data; // console.log(result);
+                data.books = result.data;
+                console.log(result);
 
-              case 5:
+              case 6:
               case "end":
                 return _context.stop();
             }
@@ -20273,10 +20274,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
                   data.books.push(book_list);
-                }); // console.log("data.books");
-                // console.log(data.books);
+                });
+                console.log("data.books");
+                console.log(data.books);
 
-              case 6:
+              case 8:
               case "end":
                 return _context.stop();
             }
@@ -21281,7 +21283,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     , ["book_list"]);
   }), 128
   /* KEYED_FRAGMENT */
-  ))]);
+  )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.data.books), 1
+  /* TEXT */
+  )]);
 }
 
 /***/ }),

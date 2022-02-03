@@ -37,7 +37,7 @@ export default {
       );
       data.books = result.data;
 
-      // console.log(result);
+      console.log(result);
 
     };
     return { data, getData };
