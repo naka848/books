@@ -20172,7 +20172,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 3:
                 result = _context.sent;
-                // 子コンポーネントに送るデータの初期化
+                console.log(result); // 子コンポーネントに送るデータの初期化
+
                 data.books = []; // 要素のコピーを渡している
 
                 result.data.map(function (item) {
@@ -20204,7 +20205,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 }); // console.log("data.books");
                 // console.log(data.books);
 
-              case 6:
+              case 7:
               case "end":
                 return _context.stop();
             }

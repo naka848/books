@@ -41,6 +41,8 @@ export default {
         "http://127.0.0.1:8000/api/book_information" + querry
       );
 
+      console.log(result);
+
       // 子コンポーネントに送るデータの初期化
       data.books = [];
 
