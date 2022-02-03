@@ -1,45 +1,46 @@
 <template>
   <div>
-    <h3>除籍</h3>
-    <!-- <DeleteInfoC
-      v-for="data in data.book_list"
+    <h3>除籍する本の検索</h3>
+    <input type="text" v-model="data.find" />
+    <button @click="getData">検索</button>
+    <DeleteBookC
+      v-for="data in data.books "
       v-bind:book_list="data"
-      v-bind:key="data.book_id"
-    /> -->
+      v-bind:key="data.book_information"
+    />
   </div>
 </template>
 
 <script>
 import { reactive } from "vue";
-import { useStore } from "vuex";
-// import axios from "axios";
-// import DeleteInfoC from "./DeleteInfoC";
+import axios from "axios";
+import DeleteBookC from "./DeleteBookC";
 
 export default {
   name: "DeleteBook",
-  // components: {
-  //   DeleteInfoC,
-  // },
+  components: {
+    DeleteBookC,
+  },
   setup() {
     const data = reactive({
-      book_list: [],
+      // "vue"は後で""に直す
+      find: "vue",
+      // 送りたい情報がここにまとまる
+      books: [],
     });
-    const store = useStore();
 
-    // Storeのactionへ
-    // 書籍情報一覧データ取得
-    const getBookList = async () => {
-      const result = await store.dispatch("getBookList");
-      data.book_list = result;
-      // console.log(data.book_list);
+    // BookInformationController、showアクションへ
+    const getData = async () => {
+      const querry = "/" + data.find;
+      const result = await axios.get(
+        "http://127.0.0.1:8000/api/book_information" + querry
+      );
+      data.books = result.data;
+
+      // console.log(result);
+
     };
-
-    getBookList();
-
-    return {
-      data,
-      getBookList,
-    };
+    return { data, getData };
   },
 };
 </script>

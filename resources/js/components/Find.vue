@@ -3,12 +3,6 @@
     <h3>書籍検索</h3>
     <input type="text" v-model="data.find" />
     <button @click="getData">検索</button>
-
-    <!-- {{ data.books }} -->
-    <br />
-    <!-- 配列の中にキーが入ってて指定できない -->
-    <!-- {{ data.books.book_information_id }} -->
-
     <FindC
       v-for="book in data.books"
       v-bind:book_list="book"
@@ -35,13 +29,14 @@ export default {
       books: [],
     });
 
+    // BookInformationController、showアクションへ
     const getData = async () => {
       const querry = "/" + data.find;
       const result = await axios.get(
         "http://127.0.0.1:8000/api/book_information" + querry
       );
 
-      console.log(result);
+      // console.log(result);
 
       // 子コンポーネントに送るデータの初期化
       data.books = [];
