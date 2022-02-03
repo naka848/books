@@ -29,7 +29,7 @@ export default {
     // ユーザー情報を追加
     // →UserControllerのstoreアクション
     const getData = async () => {
-      const result = await axios.post("http://127.0.0.1:8000/api/users", {
+      const result = await axios.post("http://127.0.0.1:8000/api/register", {
         name: data.name,
         email: data.email,
         password: data.password,
