@@ -20620,8 +20620,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   setup: function setup() {
     var data = (0,vue__WEBPACK_IMPORTED_MODULE_1__.reactive)({
-      // 3は後で消す！
-      user_id: "3",
+      // 後で消す！
+      user_id: "1",
       book_info: []
     });
 

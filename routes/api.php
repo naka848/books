@@ -8,6 +8,7 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\BookInformationController;
 use App\Http\Controllers\RentalController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 
 // 受信リクエストがSPAからのステートフル認証済みリクエストとして認証されるか、
 // リクエストがサードパーティからのものである場合は有効なAPIトークンヘッダを含むことを保証する
@@ -23,4 +24,5 @@ Route::apiResource('/book_information',BookInformationController::class);
 Route::apiResource('/rentals',RentalController::class);
 // 手動
 Route::post('/login', [LoginController::class, 'authenticate']);
-Route::post('/users', [UserController::class, 'store']);
+// Route::post('/users', [UserController::class, 'store']);
+Route::post('register', [RegisterController::class, 'register']);

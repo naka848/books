@@ -27,8 +27,8 @@ export default {
   },
   setup() {
     const data = reactive({
-      // 3は後で消す！
-      user_id: "3",
+      // 後で消す！
+      user_id: "1",
       book_info: [],
     });
 
