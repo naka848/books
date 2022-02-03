@@ -56,7 +56,7 @@ export default {
 
       // booksテーブルの、貸出されたbook_idのavailabilityをfalseに変更
       await axios.patch("http://127.0.0.1:8000/api/books/" + target_book_id, {
-        process: 'B',
+        component: 'Borrow',
       });
 
       // 貸出状況のページへ（statusコンポーネントへ）

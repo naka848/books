@@ -24,10 +24,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        // プレビューに$requestの中身がでない
+        // ここまでこれてなさそう
+        dd($request);
+        // $user = User::create([
+        //     'name' => $request->name,
+        //     'email' => $request->email,
+        //     'password' => $request->password,
+        //     ]);
         $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => $request->password,
+            'name' => 'momo',
+            'email' => 'momo@mm.com',
+            'password' => 'sumomo',
             ]);
     }
 

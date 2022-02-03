@@ -19720,7 +19720,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 3:
                 _context.next = 5;
                 return axios__WEBPACK_IMPORTED_MODULE_3___default().patch("http://127.0.0.1:8000/api/books/" + target_book_id, {
-                  process: 'B'
+                  component: 'Borrow'
                 });
 
               case 5:
@@ -20726,7 +20726,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 target_book_id = store.state.book_list[0].available_book_id[0];
                 _context.next = 7;
                 return axios__WEBPACK_IMPORTED_MODULE_2___default().patch("http://127.0.0.1:8000/api/books/" + target_book_id, {
-                  process: "R"
+                  component: 'StatusC'
                 });
 
               case 7:

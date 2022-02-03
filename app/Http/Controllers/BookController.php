@@ -59,9 +59,10 @@ class BookController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // dd($request->component == 'Borrow');
         // 本の貸出処理の場合
         // availabilityをfalse「0」に変更する
-        if ($request->process == 'B') {
+        if ($request->component == 'Borrow') {
             Book::where('book_id', $id)->update(['availability' => 0]);
         // 本の返却処理の場合
         // availabilityをtrue「1」に変更する
