@@ -17,11 +17,16 @@ class LoginController extends Controller
             'password' => ['required'],
         ]);
 
-        // dd($credentials);
-        // dd(Auth::attempt($credentials));
+        // $email = $request->email;
+        // $password = $request->password;
+
+        dd($credentials);
+        dd(Auth::attempt($credentials));
 
         // 認証が成功した場合の処理
         if (Auth::attempt($credentials)) {
+        // if (Auth::attempt(['email' => $email,'password' => $password])){
+        
             // セッションIDの再生成
             $request->session()->regenerate();
             // ログイン後、「dashboard」?? へページ遷移する
