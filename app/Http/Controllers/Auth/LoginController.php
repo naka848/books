@@ -20,8 +20,8 @@ class LoginController extends Controller
         // $email = $request->email;
         // $password = $request->password;
 
-        dd($credentials);
-        dd(Auth::attempt($credentials));
+        // dd($credentials);
+        // dd(Auth::attempt($credentials));
 
         // 認証が成功した場合の処理
         if (Auth::attempt($credentials)) {
