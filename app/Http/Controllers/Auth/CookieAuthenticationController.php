@@ -6,32 +6,23 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class LoginController extends Controller
+class CookieAuthenticationController extends Controller
 {
-    public function authenticate(Request $request)
+    public function login(Request $request)
     {
-        // dd($request);
-
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
 
-        // $email = $request->email;
-        // $password = $request->password;
-
-        // dd($credentials);
-        // dd(Auth::attempt($credentials));
-
         // 認証が成功した場合の処理
         if (Auth::attempt($credentials)) {
-        // if (Auth::attempt(['email' => $email,'password' => $password])){
-        
             // セッションIDの再生成
             $request->session()->regenerate();
             // ログイン後、「dashboard」?? へページ遷移する
             // return redirect()->intended('dashboard');
-            return response()->json(['message' => 'Login successful'], 200);
+            return response()->json(['message' => 'ログインしました'], 200);
+            // return new JsonResponse(['message' => 'ログインしました']);
         }
 
         // 認証が失敗した場合の処理
@@ -40,6 +31,7 @@ class LoginController extends Controller
         // return back()->withErrors([
         //     'email' => 'The provided credentials do not match our records.',
         // ]);
-        return response()->json(['message' => 'Login failure！']);
+        return response()->json(['message' => 'ログインに失敗しました。再度お試しください']);
+        // throw new Exception('ログインに失敗しました。再度お試しください');
     }
 }
