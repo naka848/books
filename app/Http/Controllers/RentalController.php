@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Rental;
-use App\Models\Book;
 use App\Models\BookInformation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RentalController extends Controller
 {
@@ -27,8 +27,10 @@ class RentalController extends Controller
      */
     public function store(Request $request)
     {
+        $id = Auth::id();
+        // dd($id);
         $rental = Rental::create([
-            'user_id' => $request->user_id,
+            'user_id' => $id,
             'book_id' => $request->book_id,
             'checkout_date' => $request->checkout_date,
         ]);
@@ -42,6 +44,11 @@ class RentalController extends Controller
      */
     public function show($id)
     {
+        // $user = Auth::user();
+        // dd($user);
+        $id = Auth::id();
+        // dd($id);
+
         // 特定のユーザーの、返していない本のデータを集める
         $rentals = Rental::where([
             ['user_id', $id],

@@ -9,10 +9,10 @@
     {{ $store.state.book_list[0].availability }}
     <br />
     <dl>
-      <dt>ユーザーID</dt>
+      <!-- <dt>ユーザーID</dt>
       <dd>
         <input type="text" v-model="data.user_id" />
-      </dd>
+      </dd> -->
       <dt>貸出日</dt>
       <dd>
         <input type="date" v-model="data.checkout_date" />
@@ -32,7 +32,7 @@ export default {
   name: "Borrow",
   setup() {
     const data = reactive({
-      user_id: "",
+      // user_id: "",
       checkout_date: "",
     });
 
@@ -49,7 +49,7 @@ export default {
 
       // rentalsテーブルに貸出データを追加
       await axios.post("http://127.0.0.1:8000/api/rentals", {
-        user_id: data.user_id,
+        // user_id: data.user_id,
         book_id: target_book_id,
         checkout_date: data.checkout_date,
       });

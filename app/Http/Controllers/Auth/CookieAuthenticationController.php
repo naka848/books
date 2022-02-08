@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 
 class CookieAuthenticationController extends Controller
@@ -21,8 +22,8 @@ class CookieAuthenticationController extends Controller
             $request->session()->regenerate();
             // ログイン後、「dashboard」?? へページ遷移する
             // return redirect()->intended('dashboard');
-            return response()->json(['message' => 'ログインしました'], 200);
-            // return new JsonResponse(['message' => 'ログインしました']);
+            // return response()->json(['message' => 'ログインしました'], 200);
+            return new JsonResponse(['message' => 'ログインしました']);
         }
 
         // 認証が失敗した場合の処理
@@ -31,7 +32,14 @@ class CookieAuthenticationController extends Controller
         // return back()->withErrors([
         //     'email' => 'The provided credentials do not match our records.',
         // ]);
-        return response()->json(['message' => 'ログインに失敗しました。再度お試しください']);
-        // throw new Exception('ログインに失敗しました。再度お試しください');
+        // return response()->json(['message' => 'ログインに失敗しました。再度お試しください']);
+        // 例外を投げる
+        throw new Exception('ログインに失敗しました。再度お試しください');
+    }
+
+    // 今後つくりたいな
+    public function logout(Request $request)
+    {
+        //
     }
 }

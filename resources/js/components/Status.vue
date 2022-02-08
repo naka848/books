@@ -1,11 +1,11 @@
 <template>
   <div>
     <h3>貸出状況</h3>
-    <dl>
+    <!-- <dl>
       <dt>ユーザーID</dt>
       <dd><input type="text" v-model="data.user_id" /></dd>
-    </dl>
-    <button @click="getData">検索</button>
+    </dl> -->
+    <!-- <button @click="getData">検索</button> -->
 
     <StatusC
       v-for="book in data.book_info"
@@ -35,13 +35,15 @@ export default {
     const getData = async () => {
       // console.log(data.user_id);
 
-      const querry = "/" + data.user_id;
+      // const querry = "/" + 0;
       //showアクションへ
       const result = await axios.get(
-        "http://127.0.0.1:8000/api/rentals" + querry
+        "http://127.0.0.1:8000/api/rentals/0"
       );
       data.book_info = result.data;
     };
+
+    getData();
 
     return { data, getData };
   },

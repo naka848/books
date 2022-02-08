@@ -8,7 +8,6 @@
       v-bind:book_list="book"
       v-bind:key="book.book_information_id"
     />
-    {{data.books}}
   </div>
 </template>
 
