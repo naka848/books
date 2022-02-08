@@ -24,4 +24,5 @@ Route::apiResource('/book_information',BookInformationController::class);
 Route::apiResource('/rentals',RentalController::class);
 // 手動
 Route::post('/login', [CookieAuthenticationController::class, 'login']);
+Route::post('/logout', [CookieAuthenticationController::class, 'logout']);
 Route::post('/register', [RegisterController::class, 'store']);

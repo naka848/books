@@ -37,9 +37,24 @@ class CookieAuthenticationController extends Controller
         throw new Exception('ログインに失敗しました。再度お試しください');
     }
 
-    // 今後つくりたいな
     public function logout(Request $request)
     {
-        //
+        // dd($request);
+
+        // ログインのセッションを無効とする
+        Auth::logout();
+
+        // セッションをクリア＆セッションIDを再発行
+        $request->session()->invalidate();
+    
+        // csrfトークンの再生成 
+        // 二重送信対策
+        $request->session()->regenerateToken();
+    
+        return redirect('/');
     }
 }
+
+
+
+
