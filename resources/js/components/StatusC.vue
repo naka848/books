@@ -2,6 +2,7 @@
   <div>
     「{{ book_list[1].title }}」 {{ book_list[1].author }} 著
     <button @click="returnAction">返す</button>
+    {{book_list}}
   </div>
 </template>
 
@@ -39,7 +40,13 @@ export default {
         component: 'StatusC',
       });
 
-      window.location.href = "http://127.0.0.1:8000/status";
+      console.log('target_book_id');
+      console.log(target_book_id);
+
+      console.log('store.state.book_list');
+      console.log(store.state.book_list);
+
+      // window.location.href = "http://127.0.0.1:8000/status";
     };
     return { data, returnAction };
   },

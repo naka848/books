@@ -20802,9 +20802,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 });
 
               case 7:
-                window.location.href = "http://127.0.0.1:8000/status";
+                console.log('target_book_id');
+                console.log(target_book_id);
+                console.log('store.state.book_list');
+                console.log(store.state.book_list); // window.location.href = "http://127.0.0.1:8000/status";
 
-              case 8:
+              case 11:
               case "end":
                 return _context.stop();
             }
@@ -21671,7 +21674,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[0] || (_cache[0] = function () {
       return $setup.returnAction && $setup.returnAction.apply($setup, arguments);
     })
-  }, "返す")]);
+  }, "返す"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.book_list), 1
+  /* TEXT */
+  )]);
 }
 
 /***/ }),
