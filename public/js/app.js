@@ -20773,6 +20773,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     var data = (0,vue__WEBPACK_IMPORTED_MODULE_1__.reactive)({
       rental_id: props.book_list[0],
       book_id: props.book_list[1],
+      // book_info: props.book_list[2],
       current_date: ""
     }); // 返却処理
 

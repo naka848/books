@@ -19,6 +19,7 @@ export default {
     const data = reactive({
       rental_id: props.book_list[0],
       book_id: props.book_list[1],
+      // book_info: props.book_list[2],
       current_date: "",
     });
 
