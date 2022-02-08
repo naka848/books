@@ -28,7 +28,7 @@ export default {
   setup() {
     const data = reactive({
       // 後で消す！
-      user_id: "1",
+      // user_id: "1",
       book_info: [],
     });
 
@@ -40,6 +40,7 @@ export default {
       const result = await axios.get(
         "http://127.0.0.1:8000/api/rentals/0"
       );
+      // console.log(result);
       data.book_info = result.data;
     };
 

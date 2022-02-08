@@ -20695,7 +20695,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   setup: function setup() {
     var data = (0,vue__WEBPACK_IMPORTED_MODULE_1__.reactive)({
       // 後で消す！
-      user_id: "1",
+      // user_id: "1",
       book_info: []
     });
 
@@ -20711,6 +20711,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 2:
                 result = _context.sent;
+                // console.log(result);
                 data.book_info = result.data;
 
               case 4:
@@ -20754,13 +20755,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var dayjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! dayjs */ "./node_modules/dayjs/dayjs.min.js");
 /* harmony import */ var dayjs__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(dayjs__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
 
 
 
@@ -20773,13 +20772,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   setup: function setup(props) {
     var data = (0,vue__WEBPACK_IMPORTED_MODULE_1__.reactive)({
       rental_id: props.book_list[0],
+      book_id: props.book_list[1],
       current_date: ""
-    });
-    var store = (0,vuex__WEBPACK_IMPORTED_MODULE_4__.useStore)(); // 返却処理
+    }); // 返却処理
 
     var returnAction = /*#__PURE__*/function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-        var now, target_book_id;
+        var now;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -20794,20 +20793,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 });
 
               case 4:
-                // booksテーブルのavailabilityをtrue「1」に戻す
-                target_book_id = store.state.book_list[0].available_book_id[0];
-                _context.next = 7;
-                return axios__WEBPACK_IMPORTED_MODULE_2___default().patch("http://127.0.0.1:8000/api/books/" + target_book_id, {
+                _context.next = 6;
+                return axios__WEBPACK_IMPORTED_MODULE_2___default().patch("http://127.0.0.1:8000/api/books/" + data.book_id, {
                   component: 'StatusC'
                 });
 
-              case 7:
-                console.log('target_book_id');
-                console.log(target_book_id);
-                console.log('store.state.book_list');
-                console.log(store.state.book_list); // window.location.href = "http://127.0.0.1:8000/status";
+              case 6:
+                window.location.href = "http://127.0.0.1:8000/status";
 
-              case 11:
+              case 7:
               case "end":
                 return _context.stop();
             }
@@ -21668,15 +21662,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" 「" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.book_list[1].title) + "」 " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.book_list[1].author) + " 著 ", 1
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" 「" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.book_list[2].title) + "」 " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.book_list[2].author) + " 著 ", 1
   /* TEXT */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[0] || (_cache[0] = function () {
       return $setup.returnAction && $setup.returnAction.apply($setup, arguments);
     })
-  }, "返す"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.book_list), 1
-  /* TEXT */
-  )]);
+  }, "返す")]);
 }
 
 /***/ }),

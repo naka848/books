@@ -54,25 +54,25 @@ class RentalController extends Controller
             ['user_id', $id],
             ['return_date',null],
         ])->get();
+
         // 送るデータをまとめるための配列の定義／初期化
         $rental_lists=[];
-        // コレクション
-        // dd($rentals);
+
         foreach ($rentals as $rental) {
             $rental_list=[];
-            // モデル
-            // dd($rental);
             // rental_idを配列に追加
             array_push($rental_list, $rental->rental_id);
-            // book_information_id
-            // dd($rental->books->book_information_id);
+
+            // book_idを配列に追加
+            array_push($rental_list, $rental->book_id);
+
             // 現在借りている本の情報を取りに行く
             $book_info = BookInformation::where('book_information_id', $rental->books->book_information_id)->first();
-            // get()でとってくると、コレクションになる
-            // dd($book_info);
+
             // 本の情報を配列に追加
             array_push($rental_list, $book_info);
-            // 送るデータ用配列にpush
+
+            // 最終！！送るデータ用配列にpush
             array_push($rental_lists, $rental_list);
         }
         // dd($rental_lists);

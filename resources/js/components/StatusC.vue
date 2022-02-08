@@ -1,8 +1,7 @@
 <template>
   <div>
-    「{{ book_list[1].title }}」 {{ book_list[1].author }} 著
+    「{{ book_list[2].title }}」 {{ book_list[2].author }} 著
     <button @click="returnAction">返す</button>
-    {{book_list}}
   </div>
 </template>
 
@@ -10,7 +9,6 @@
 import { reactive } from "vue";
 import axios from "axios";
 import dayjs from "dayjs";
-import { useStore } from "vuex";
 
 export default {
   name: "StatusC",
@@ -20,10 +18,9 @@ export default {
   setup(props) {
     const data = reactive({
       rental_id: props.book_list[0],
+      book_id: props.book_list[1],
       current_date: "",
     });
-
-    const store = useStore();
 
     // 返却処理
     const returnAction = async () => {
@@ -35,18 +32,11 @@ export default {
         return_date: data.current_date,
       });
       // booksテーブルのavailabilityをtrue「1」に戻す
-      const target_book_id = store.state.book_list[0].available_book_id[0];
-      await axios.patch("http://127.0.0.1:8000/api/books/" + target_book_id, {
+      await axios.patch("http://127.0.0.1:8000/api/books/" + data.book_id, {
         component: 'StatusC',
       });
 
-      console.log('target_book_id');
-      console.log(target_book_id);
-
-      console.log('store.state.book_list');
-      console.log(store.state.book_list);
-
-      // window.location.href = "http://127.0.0.1:8000/status";
+      window.location.href = "http://127.0.0.1:8000/status";
     };
     return { data, returnAction };
   },
