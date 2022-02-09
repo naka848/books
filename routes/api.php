@@ -24,5 +24,10 @@ Route::apiResource('/book_information',BookInformationController::class);
 Route::apiResource('/rentals',RentalController::class);
 // 手動
 Route::post('/login', [CookieAuthenticationController::class, 'login']);
-Route::post('/logout', [CookieAuthenticationController::class, 'logout']);
+
+// ルートの保護をしたいが、なにか違いそう…
+Route::post('/logout', function () {
+    [CookieAuthenticationController::class, 'logout']
+})->middleware('auth');
+
 Route::post('/register', [RegisterController::class, 'store']);
