@@ -9,6 +9,27 @@ use Illuminate\Support\Facades\Auth;
 
 class CookieAuthenticationController extends Controller
 {
+    // ログイン済ユーザーは、手動でログアウトするまで認証されたままにする
+    // これは後回しでよい！
+    public function loggedIn(Request $request)
+    {
+        // $remember = $request->remember_me;
+        // if (!Auth::attempt($request->only('name', 'email', 'password'), $remember)) {
+        //     return redirect('/login');
+        // };
+        // if ($remember) {
+        //     $remember_cookie_name = Auth::getRecallerName();
+        //     Cookie::queue(
+        //         $name = $remember_cookie_name,
+        //         $value = Cookie::queued($remember_cookie_name)->getValue(),
+        //         $minutes = 10080, // 7日
+        //         $path = '/',
+        //         $domain = null
+        //     );
+        // }
+        // return redirect('/main');
+    }
+    
     public function login(Request $request)
     {
         $credentials = $request->validate([

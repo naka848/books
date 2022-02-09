@@ -22,7 +22,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Session Lifetime
+    | Session Lifetime  セッションの有効期限について（いつセッションを破棄する？）
     |--------------------------------------------------------------------------
     |
     | Here you may specify the number of minutes that you wish the session
@@ -31,9 +31,11 @@ return [
     |
     */
 
+    // デフォルトの有効期限：120分
     'lifetime' => env('SESSION_LIFETIME', 120),
 
-    'expire_on_close' => false,
+    // true：ブラウザを閉じたときに有効期限が切れるようにする
+    'expire_on_close' => true,
 
     /*
     |--------------------------------------------------------------------------
