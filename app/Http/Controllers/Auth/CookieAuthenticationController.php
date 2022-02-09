@@ -53,9 +53,7 @@ class CookieAuthenticationController extends Controller
         // return back()->withErrors([
         //     'email' => 'The provided credentials do not match our records.',
         // ]);
-        // return response()->json(['message' => 'ログインに失敗しました。再度お試しください']);
-        // 例外を投げる
-        throw new Exception('ログインに失敗しました。再度お試しください');
+        return response()->json(['message' => 'ログインに失敗しました。再度お試しください'],401);
     }
 
     public function logout(Request $request)

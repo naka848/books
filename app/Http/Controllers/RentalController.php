@@ -17,29 +17,33 @@ class RentalController extends Controller
     // ユーザーごとの貸出状況データ
     public function index()
     {
-        // 現在ログインしているユーザーのIDを取得する
-        $id = Auth::id();
-        // 特定のユーザーの、返していない本のデータを集める
-        $rentals = Rental::where([
-            ['user_id', $id],
-            ['return_date',null],
-        ])->get();
-        // 送るデータをまとめるための配列の定義／初期化
-        $rental_lists=[];
-        foreach ($rentals as $rental) {
-            $rental_list=[];
-            // rental_idを配列に追加
-            array_push($rental_list, $rental->rental_id);
-            // book_idを配列に追加
-            array_push($rental_list, $rental->book_id);
-            // 現在借りている本の情報を取りに行く
-            $book_info = BookInformation::where('book_information_id', $rental->books->book_information_id)->first();
-            // 本の情報を配列に追加
-            array_push($rental_list, $book_info);
-            // 最終！！送るデータ用配列にpush
-            array_push($rental_lists, $rental_list);
+        if (Auth::check()) {
+            // 現在ログインしているユーザーのIDを取得する
+            $id = Auth::id();
+            // 特定のユーザーの、返していない本のデータを集める
+            $rentals = Rental::where([
+                ['user_id', $id],
+                ['return_date',null],
+            ])->get();
+            // 送るデータをまとめるための配列の定義／初期化
+            $rental_lists=[];
+            foreach ($rentals as $rental) {
+                $rental_list=[];
+                // rental_idを配列に追加
+                array_push($rental_list, $rental->rental_id);
+                // book_idを配列に追加
+                array_push($rental_list, $rental->book_id);
+                // 現在借りている本の情報を取りに行く
+                $book_info = BookInformation::where('book_information_id', $rental->books->book_information_id)->first();
+                // 本の情報を配列に追加
+                array_push($rental_list, $book_info);
+                // 最終！！送るデータ用配列にpush
+                array_push($rental_lists, $rental_list);
+            }
+            return $rental_lists;
+        } else {
+            return response()->json(['message' => 'ログインしていません'],401);
         }
-        return $rental_lists;
     }
 
     /**
@@ -67,7 +71,7 @@ class RentalController extends Controller
      */
     public function show($id)
     {
-        // 
+        //
     }
 
     /**
@@ -79,7 +83,7 @@ class RentalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Rental::where('rental_id',$id )
+        Rental::where('rental_id', $id)
             ->update(['return_date' => $request->return_date]);
     }
 
