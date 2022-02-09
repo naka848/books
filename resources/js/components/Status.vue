@@ -1,12 +1,6 @@
 <template>
   <div>
     <h3>貸出状況</h3>
-    <!-- <dl>
-      <dt>ユーザーID</dt>
-      <dd><input type="text" v-model="data.user_id" /></dd>
-    </dl> -->
-    <!-- <button @click="getData">検索</button> -->
-
     <StatusC
       v-for="book in data.book_info"
       v-bind:book_list="book"
@@ -27,20 +21,15 @@ export default {
   },
   setup() {
     const data = reactive({
-      // 後で消す！
-      // user_id: "1",
       book_info: [],
     });
 
     const getData = async () => {
-      // console.log(data.user_id);
 
-      // const querry = "/" + 0;
-      //showアクションへ
+      //indexアクションへ
       const result = await axios.get(
-        "http://127.0.0.1:8000/api/rentals/0"
+        "http://127.0.0.1:8000/api/rentals"
       );
-      // console.log(result);
       data.book_info = result.data;
     };
 
