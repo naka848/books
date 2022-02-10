@@ -17,7 +17,7 @@ class RentalController extends Controller
     // ユーザーごとの貸出状況データ
     public function index()
     {
-        if (Auth::check()) {
+        // if (Auth::check()) {
             // 現在ログインしているユーザーのIDを取得する
             $id = Auth::id();
             // 特定のユーザーの、返していない本のデータを集める
@@ -41,9 +41,9 @@ class RentalController extends Controller
                 array_push($rental_lists, $rental_list);
             }
             return $rental_lists;
-        } else {
-            return response()->json(['message' => 'ログインしていません'],401);
-        }
+        // } else {
+        //     return response()->json(['message' => 'ログインしていません'],401);
+        // }
     }
 
     /**

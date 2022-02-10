@@ -60,4 +60,15 @@ class RouteServiceProvider extends ServiceProvider
             return Limit::perMinute(60)->by(optional($request->user())->id ?: $request->ip());
         });
     }
+
+    // このメソッドは親のIlluminate\Foundation\Support\Providers\RouteServiceProviderから呼び出されています
+    // public function map()
+    // {
+    //     Route::prefix('api')
+    //         // このprefix以下にあるものに全てmiddlewareが適用される
+    //         ->middleware(['auth:api'])
+    //         // Controllerがどこにあるか指定
+    //         ->namespace($this->namespace . '\Api')
+    //         ->group(base_path('routes/api.php'));
+    // }
 }

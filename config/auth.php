@@ -20,11 +20,11 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Authentication Guards
+    | Authentication Guards（認証保護）
     |--------------------------------------------------------------------------
     |
     | Next, you may define every authentication guard for your application.
-    | Of course, a great default configuration has been defined for you
+    | Of course, a great default configuration（素晴らしい初期設定） has been defined for you
     | here which uses session storage and the Eloquent user provider.
     |
     | All authentication drivers have a user provider. This defines how the
@@ -44,16 +44,16 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | User Providers
+    | User Providers（提供者、供給者）
     |--------------------------------------------------------------------------
     |
-    | All authentication drivers have a user provider. This defines how the
-    | users are actually retrieved out of your database or other storage
-    | mechanisms used by this application to persist your user's data.
+    | All authentication drivers have a user provider. This defines（定義する） ／ how（方法）the
+    | users are actually retrieved（取得した） ／ out of your database or other storage
+    | mechanisms ／ used by this application ／ to persist（保持する） your user's data.
     |
-    | If you have multiple user tables or models you may configure multiple
-    | sources which represent each model / table. These sources may then
-    | be assigned to any extra authentication guards you have defined.
+    | If you have multiple（多数の） user tables or models ／ you may configure（構成、設計する） multiple
+    | sources ／ which represent（代表する、表す） each model / table. These sources may then
+    | be assigned（割り当てられた） to any extra（追加の） authentication guards you have defined.
     |
     | Supported: "database", "eloquent"
     |
