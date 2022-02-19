@@ -31,21 +31,15 @@ Route::post('/register', [RegisterController::class, 'store']);
 // 変更前
 // Route::post('/logout', [CookieAuthenticationController::class, 'logout']);
 
-// 方法①個別のパスに対して認証
-// →なんか書き方違いそう
-// Route::post('/logout', function () {
-//     [CookieAuthenticationController::class, 'logout']
-// })->middleware('auth');
-
-// Route::middleware('auth:api')->post('/logout', function(Request $request) {
-//     return $request->user();
-// });
-
-
-// 方法②グループ化したパスに対して認証
-Route::middleware('auth:api', 'throttle:60,1')->group(function () {
+// 認証済みでないと許可しない
+Route::group(["middleware" => ["auth:sanctum"]], function () {
     Route::post('/logout', [CookieAuthenticationController::class, 'logout']);
 });
+
+// 方法②グループ化したパスに対して認証
+// Route::middleware('auth:api', 'throttle:60,1')->group(function () {
+//     Route::post('/logout', [CookieAuthenticationController::class, 'logout']);
+// });
 
 // Route::group(['middleware' => ['auth']], function () { 
 //     Route::post('/logout', [CookieAuthenticationController::class, 'logout']);
@@ -57,9 +51,6 @@ Route::middleware('auth:api', 'throttle:60,1')->group(function () {
 // });
 
 
-// 方法③RouteServiceProviderで認証
-// app/Providers/RouteServiceProvider.phpにて設定
-// →動いてなさそう
 
 
 
