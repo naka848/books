@@ -14,8 +14,10 @@ class ExampleTest extends TestCase
      */
     public function test_example()
     {
+        // トップページ「/」に対してgetリクエストをする
         $response = $this->get('/');
 
+        // その結果に対して、ステータスコード200が返ってくるか確認
         $response->assertStatus(200);
     }
 }
