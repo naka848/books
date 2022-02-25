@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Dotenv\Exception\ValidationException;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
@@ -52,6 +53,8 @@ class CookieAuthenticationController extends Controller
         //     'email' => 'The provided credentials do not match our records.',
         // ]);
         return response()->json(['message' => 'ログインに失敗しました。再度お試しください'],401);
+        // 使えるか後で確認する
+        // throw ValidationException::withMessages(['email' => 'メールアドレスかパスワードが間違っています']);
     }
 
     public function logout(Request $request)
