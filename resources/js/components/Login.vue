@@ -16,6 +16,7 @@
 <script>
 import { reactive } from "vue";
 import axios from "axios";
+import { useRouter } from "vue-router";
 
 export default {
   name: "CreateInfo",
@@ -25,12 +26,15 @@ export default {
       password: "nakao",
     });
 
+    const router = useRouter();
+
     const loginAction = async () => {
       await axios.get("/sanctum/csrf-cookie");
       const result = await axios.post("/api/login", {
         email: data.email,
         password: data.password,
       });
+      router.replace({ name: "status" });
       console.log(result);
     };
 

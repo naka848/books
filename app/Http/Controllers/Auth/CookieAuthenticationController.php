@@ -42,8 +42,8 @@ class CookieAuthenticationController extends Controller
         if (Auth::attempt($credentials)) {
             // セッションIDの再生成
             $request->session()->regenerate();
-            // return new JsonResponse(['message' => 'ログインしました']);
-            return redirect('/status');
+            return new JsonResponse(['message' => 'ログインしました']);
+            // return redirect('http://127.0.0.1:8000/status');
         }
 
         // 認証が失敗した場合の処理

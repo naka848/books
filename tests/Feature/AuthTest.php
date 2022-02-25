@@ -6,6 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 
 class AuthTest extends TestCase
@@ -35,8 +36,9 @@ class AuthTest extends TestCase
         // DBに保存するデータを用意
         $dbData = [
             'email' => 'aaa@bbb.net',
-            // パスワードハッシュ化、これでもできるかみてみる
-            'password' => bcrypt('abcd1234'),
+            // 'password' => bcrypt('abcd1234'),
+            'password' => Hash::make('abcd1234'),
+
         ];
         
         // dump($dbData);
@@ -48,9 +50,11 @@ class AuthTest extends TestCase
 
         // ログインページにpostDataを送信した場合に「貸出状況」ページにリダイレクトできているか
         $this->post('/',$postData)
-            ->assertRedirect('/status');
+            // ->assertRedirect('/status');
+            ->assertRedirect('http://127.0.0.1:8000/status');
 
         // 指定したユーザーが認証されているか
         $this->assertAuthenticatedAs($user);
+
     }
 }
