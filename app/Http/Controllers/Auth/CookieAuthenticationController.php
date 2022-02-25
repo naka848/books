@@ -41,10 +41,8 @@ class CookieAuthenticationController extends Controller
         if (Auth::attempt($credentials)) {
             // セッションIDの再生成
             $request->session()->regenerate();
-            // ログイン後、「dashboard」?? へページ遷移する
-            // return redirect()->intended('dashboard');
-            // return response()->json(['message' => 'ログインしました'], 200);
-            return new JsonResponse(['message' => 'ログインしました']);
+            // return new JsonResponse(['message' => 'ログインしました']);
+            return redirect('/status');
         }
 
         // 認証が失敗した場合の処理
