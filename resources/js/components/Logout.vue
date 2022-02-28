@@ -13,7 +13,7 @@ export default {
   name: "Logout",
   setup() {
     const logoutAction = async () => {
-      const result = await axios.post("/api/logout");
+      const result = await axios.get("/api/logout");
       console.log(result);
       // ログイン画面へ
       window.location.href = "http://127.0.0.1:8000/";

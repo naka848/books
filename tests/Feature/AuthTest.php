@@ -20,37 +20,53 @@ class AuthTest extends TestCase
         parent::setUp();
 
         // テストユーザ作成＆DBに保存
-        $this->user = User::create([
-            'name' => 'sample_user',
-            'email' => 'aaa@bbb.net',
-            'password' => Hash::make('abcd1234'),
-        ]);
-
+        // $this->user = User::create([
+        //     'name' => 'sample_user',
+        //     'email' => 'aaa@bbb.net',
+        //     'password' => Hash::make('abcd1234'),
+        // ]);
+        $this->user = User::factory()->create();
     }
 
-    /** @test index*/
-    // public function ログイン画面を開ける()
-    // {
-    //     $this->get('/')
-    //         ->assertOk();
-    // }
-
-    /** @test index*/
+    /** @test login*/
     public function 正しいパスワードの場合()
-    {   
+    {
         $response = $this->get('/');
         $response->assertStatus(200);
 
-        // dump($this->user);
+        // actingAs:指定ユーザーを現在のユーザーとして認証する
+        $response = $this->actingAs($this->user)->get('/');
 
         // ログインする
-        // $response = $this->post('/', ['email' => $this->user->email, 'password' => 'abcd1234']);
-        $response = $this->post('/', ['email' => 'aaa@bbb.net', 'password' => 'abcd1234']);
+        // $response = $this->post('/api/login', ['email' => $this->user->email, 'password' => 'abcd1234']);
     
         // このユーザーがログイン認証されているか
-        // FAIL
-        // $this->userの中を確認した感じ大丈夫そうだが…？
         $this->assertAuthenticatedAs($this->user);
+    }
 
+    /** @test login*/
+    public function 間違ったパスワードの場合()
+    {
+        $response = $this->get('/');
+        $response->assertStatus(200);
+        // パスワードが正しく無い状態でログイン
+        $response = $this->post('/login', ['email' => $this->user->email, 'password' => 'Test123']);
+        // 失敗しているので認証されていない事
+        $this->assertGuest();
+    }
+
+    /** @test logout*/
+    public function ログアウトが正しくできるか()
+    {
+        // ログイン状態の作成
+        $response = $this->actingAs($this->user);
+        $response = $this->get('/');
+        $response->assertStatus(200);
+        // ログアウト処理をする
+        $this->get('/api/logout');
+        // ログアウト出来たら200番が帰ってきているか
+        $response->assertStatus(200);
+        // 認証されていないことを確認
+        $this->assertGuest();
     }
 }

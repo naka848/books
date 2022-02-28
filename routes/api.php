@@ -26,15 +26,13 @@ Route::apiResource('/rentals',RentalController::class);
 Route::post('/login', [CookieAuthenticationController::class, 'login']);
 Route::post('/register', [RegisterController::class, 'store']);
 
-
-
 // 変更前
-// Route::post('/logout', [CookieAuthenticationController::class, 'logout']);
+Route::get('/logout', [CookieAuthenticationController::class, 'logout']);
 
 // 認証済みでないと許可しない
-Route::group(["middleware" => ["auth:sanctum"]], function () {
-    Route::post('/logout', [CookieAuthenticationController::class, 'logout']);
-});
+// Route::group(["middleware" => ["auth:sanctum"]], function () {
+//     Route::post('/logout', [CookieAuthenticationController::class, 'logout']);
+// });
 
 // 方法②グループ化したパスに対して認証
 // Route::middleware('auth:api', 'throttle:60,1')->group(function () {
