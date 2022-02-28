@@ -44,59 +44,13 @@ class AuthTest extends TestCase
         // dump($this->user);
 
         // ログインする
-        $response = $this->post('/', ['email' => $this->user->email, 'password' => 'abcd1234']);
-        // $response = $this->post('/', ['email' => 'aaa@bbb.net', 'password' => 'abcd1234']);
-
-        // リダイレクトでページ遷移してくるのでstatusは302
-        // FAIL
-        // $response->assertStatus(302);
-        
-        // リダイレクトで帰ってきた時のパス
-        // FAIL
-        // $response->assertRedirect('/status');
-
+        // $response = $this->post('/', ['email' => $this->user->email, 'password' => 'abcd1234']);
+        $response = $this->post('/', ['email' => 'aaa@bbb.net', 'password' => 'abcd1234']);
+    
         // このユーザーがログイン認証されているか
         // FAIL
         // $this->userの中を確認した感じ大丈夫そうだが…？
-        // $this->assertAuthenticatedAs($this->user);
+        $this->assertAuthenticatedAs($this->user);
 
     }
-
-    /** @test login*/
-    // function ログインできる(){
-    //     // Laravel8.51～不要
-    //     // $this->withoutExceptionHandling();
-
-    //     // POST送信するデータを用意
-    //     $postData = [
-    //         'email' => 'aaa@bbb.net',
-    //         'password' => 'abcd1234',
-    //     ];
-
-    //     // dump($postData);
-
-    //     // DBに保存するデータを用意
-    //     $dbData = [
-    //         'email' => 'aaa@bbb.net',
-    //         // 'password' => bcrypt('abcd1234'),
-    //         'password' => Hash::make('abcd1234'),
-
-    //     ];
-
-    //     // dump($dbData);
-
-    //     // DBにデータを保存する
-    //     $user = User::factory()->create($dbData);
-
-    //     // dump($user);
-
-    //     // ログインページにpostDataを送信した場合に「貸出状況」ページにリダイレクトできているか
-    //     $this->post('/',$postData)
-    //         // ->assertRedirect('/status');
-    //         ->assertRedirect('http://127.0.0.1:8000/status');
-
-    //     // 指定したユーザーが認証されているか
-    //     $this->assertAuthenticatedAs($user);
-
-    // }
 }
