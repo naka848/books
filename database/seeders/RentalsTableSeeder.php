@@ -53,11 +53,11 @@ class RentalsTableSeeder extends Seeder
         // ];
         // DB::table('rentals')->insert($param);
 
-        // $param = [
-        //     'user_id' => 3,
-        //     'book_id' => 2,
-        //     'checkout_date' => '2022-01-25',
-        // ];
-        // DB::table('rentals')->insert($param);
+        $param = [
+            'user_id' => 11,
+            'book_id' => 1,
+            'checkout_date' => '2022-01-25',
+        ];
+        DB::table('rentals')->insert($param);
     }
 }
